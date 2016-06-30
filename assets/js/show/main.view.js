@@ -25,7 +25,7 @@ View.prototype.enableBreak = function(){
 	var _btn = document.getElementById('break__button');
 
 	_btn.addEventListener('click', function(){
-		
+
 new Modal({
 	type: 'body',
 	header: 'Drag out where your breaks are',
@@ -187,9 +187,11 @@ View.prototype.enableInfinite	=	function(){
 }
 
 View.prototype.enableResponsive = function(){
-	
+	this.mobile = true;
+	this.render(-1);	
 
 }
+
 View.prototype.enableSliders = function(){
 	var _this = this;
 	var _blobs = document.getElementsByClassName('slider__blob');
@@ -292,3 +294,17 @@ Tips.prototype.hide = function(block){
 	this._tip.style.display = 'none';
 }
 Tips = new Tips();
+
+function getWidth() {
+  if (self.innerHeight) {
+    return self.innerWidth;
+  }
+
+  if (document.documentElement && document.documentElement.clientWidth) {
+    return document.documentElement.clientWidth;
+  }
+
+  if (document.body) {
+    return document.body.clientWidth;
+  }
+}
