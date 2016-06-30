@@ -1,0 +1,83 @@
+extends __template
+
+
+block headContent
+	link(rel="stylesheet" href="/css/main--show.css")
+	title Schedules
+
+
+block bodyContent
+	div#Tips-toolTip Monday | 10:00am — 1:00pm
+	div.control__wrapper(style="margin:auto;text-align:center;max-width:1200px;width:100%;margin-top: 30px;")
+		div(style="width:65%;text-align:center;margin:auto;display:inline-block;margin-top: 30px;")
+			
+			div.slider__container(style="display:inline-block;float:left;").no_s
+				label.slider__label.slider__label--left.no_s MORNINGS
+				div.slider__wrap
+					div.slider__line.slider__line--range
+					div.slider__blob(data-slideType="avgTime")
+				label.slider__label.slider__label--right.no_s EVENINGS
+			div(style="display:inline-block;float:right;")
+			
+				div(style="padding:5px;display:inline-block;height:23px;box-sizing:border-box;font-size:12px;font-family:Raleway;border-radius:3px;cursor:pointer;margin:15px;color:#3498db;").no_s Advanced Options
+					//div(style="width:100%;color:#3498db;text-decoration:underline;margin:auto;font-family: Raleway;font-size:12px;text-align:center;").
+									Show Advanced Options
+			//
+				div.slider__container(style="float:right")
+					label.slider__label.slider__label--left SPARSE
+					div.slider__wrap
+						div.slider__line
+						div.slider__line.slider__line--active
+						div.slider__blob(data-slideType="density")
+					label.slider__label.slider__label--right DENSE
+	div#schedule__scrollWrap
+	
+	
+	
+	
+	
+	
+	
+	//Make sure this isn't rendered
+	div#templates
+		//The template for the course info on the side of schedules
+		div.schedule__infoLine
+			span.schedule__infoBlock ENGL105 AB2
+			span.schedule__infoBlock.schedule__infoBlock--right Alex Wetmore
+			span.schedule__infoBlock.schedule__infoBlock--right 3.2
+			
+		//Template for the entire schedule thing
+		div.schedule__wrapper
+			div.schedule__info
+				br
+				div.schedule__ratingWrap
+					span.schedule__ratingLabel Avg Rating
+					span.schedule__avgRating 5.29
+				br
+			div.schedule__container
+				div.schedule__dayWrap
+					each time, index in ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+						div.schedule__dayLabel=time
+				div.schedule__timeWrap
+					each time, index in ['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm','10:00 pm']
+						div.schedule__timeLabel(style="top:"+((index*30)-1)+'px')
+							div.schedule__s__name=time
+				div.schedule__blockContainer
+
+		//Template in case there isn't anything to render		
+		div.none__big(style="margin-top: 50px;")
+			div(style="font-size: 50px;font-weight: 400;color: #999;font-family: Open Sans;") Uh Oh! :(
+			div(style="font-size: 20px;font-weight: 400;color: #999;font-family: Open Sans;") There aren't any courses!
+			div(style="font-size: 12px;font-weight: 400;color: #999;font-family: Open Sans;") Try using a different combination of courses or less filters
+			br
+			img(src="/img/schedular-snapcode.png" height="100px" style="margin-top: 30px;")
+			div(style="font-size: 12px;font-weight: 400;color: #999;font-family: Open Sans;margin-top: 20px;")  If all else fails, you can always snapchat us at: schedularteam
+
+
+
+				
+	script(src="/js/show/UTIL.js")
+	script(src="/js/show/main.controller.js")
+	script(src="/js/show/main.model.js")
+	script(src="/js/show/main.view.js")
+	script(src="/js/show/main.js")

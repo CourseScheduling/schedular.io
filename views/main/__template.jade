@@ -1,0 +1,23 @@
+html
+	head
+		link(rel="stylesheet" href="/css/main.css")
+		meta(name="viewport" content="width=device-width,height=device-height,initial-scale=1")
+		script(src="/js/global.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js")
+		script(src="https://www.google-analytics.com/analytics.js" onload="ga('create', 'UA-43692440-2', 'auto');ga('send', 'pageview');" async)
+		link(href='https://fonts.googleapis.com/css?family=Open Sans:600,400,100,300' rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Raleway:400,300,100',rel='stylesheet')
+		block headContent
+	body
+		div#wholeContainer
+			div#navbar
+				a(href="/c" style="z-index:10000;float:left;outline: none;color: #000")
+					div.navbar__logoWrap
+						div.navbar__logo--Img
+						div.navbar__logo--Text Schedular
+				div.navbar__thingWrap
+					a(href="/c" style="outline: none;float: left;margin-top: -2.5px;")
+						div.navbar__thing.navbar__thing--home 
+					div.navbar__thing.navbar__thing--name Guest
+					div.navbar__thing.navbar__thing--menuDrop
+			block bodyContent

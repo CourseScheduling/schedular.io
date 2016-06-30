@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		link(rel="stylesheet" href="css/home.css")
+		link(href='https://fonts.googleapis.com/css?family=Raleway:400,100,300' rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Open Sans:400,100,300' rel='stylesheet')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js')
+		script(src="https://www.google-analytics.com/analytics.js" onload="ga('create', 'UA-43692440-2', 'auto');ga('send', 'pageview');" async	)
+		meta(name="viewport" content="width=device-width,height=device-height,initial-scale=1")
+		block HeadContent
+	body
+		div#navbar
+			a(href="/")
+				div.navbar__link Home
+			a(href="/contact")
+				div.navbar__link Contact
+			a(href="/invite")
+				div.navbar__link Invite
+				
+			div.navbar__linkWrap--login
+			
+				a(href="/u/login")
+					span.navbar__link--button.navbar__link#navbar-login Login
+				a(href="/u/signup")
+					span.navbar__link--button.navbar__link#navbar-signup Signup
+		block BodyContent

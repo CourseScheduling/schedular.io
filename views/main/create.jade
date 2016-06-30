@@ -1,0 +1,27 @@
+extends __template
+
+block headContent
+	link(rel="stylesheet" href="/css/main--create.css")
+	title Create Schedule
+
+block bodyContent
+
+	div.result__container#resultTemplate
+		div.result__header 
+		div.result__body
+	div.course__container#courseTemplate
+		div.course__text  
+	div#mainContent
+		div.main__title Your Courses
+		input#courseInput.main__input(placeholder="Enter your courses, e.g. ENGL105, English 105")
+		div#dropDown
+		div.main__courseContainer#courseContainer
+		div.main__buttonContainer
+			input(type="button" value="Create Schedule" href="/s").main__button#createBtn
+			input(type="button" value="Find Books" href="/b").main__button#findBtn
+	script.
+		document.getElementById('mainContent').center();
+	script(src="/js/create/UTIL.js")
+	script(src="/js/create/main.js")
+	script.
+		//Yea, this is gonna be hacky for now.

@@ -1,0 +1,21 @@
+doctype html
+html
+	head
+		link(rel="stylesheet" href="/css/auth.css")
+		link(href='https://fonts.googleapis.com/css?family=Raleway:400,100,300')
+		link(href='https://fonts.googleapis.com/css?family=Open Sans:400,100,300')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js')
+		script(src="/js/global.js")
+		meta(name="viewport" content="width=device-width,height=device-height,initial-scale=1")
+		block HeadContent
+	body
+		div#mainContent
+			div#authHeader
+				div.authHeader__text
+					block AuthText
+				div.authHeader__logo
+					a(href="/" title="Schedular.io")
+						img(src="http://schedular.io/images/mainLogo.png" height="100%")
+			div#inp_notif
+			div#authBody
+				block AuthBody
