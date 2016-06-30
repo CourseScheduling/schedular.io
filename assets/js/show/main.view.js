@@ -11,10 +11,30 @@ function View(){
 	this.enableInfinite();
 	this.enableResponsive();
 	this.enableSliders();
+	this.enableBreak();
 }
 
 
+new Modal({
+	type: 'body',
+	header: 'Drag out where your breaks are',
+	temp: true,
+	body: document.getElementById('break__body')
+});
+View.prototype.enableBreak = function(){
+	var _btn = document.getElementById('break__button');
 
+	_btn.addEventListener('click', function(){
+		
+new Modal({
+	type: 'body',
+	header: 'Drag out where your breaks are',
+	temp: true,
+	body: document.getElementById('break__body')
+});
+	});
+
+}
 
 
 

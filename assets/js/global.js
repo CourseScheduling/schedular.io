@@ -104,18 +104,23 @@ function Modal(options){
 		return el;
 	}
 
+	//This is gonna be global to everyone
+	var overlay = _make('div',{id: 'question__overlay'});
+	var container = _make('div',{id: 'question__container'});
+	var header = _make('div',{id: 'question__header'});
+	overlay.appendChild(container);
+
+	if(options.header){
+		header.innerHTML = options.header;
+		container.appendChild(header)
+	}
+
+
 	switch(options.type){
 		case 'select':
-			var overlay = _make('div',{id: 'question__overlay'});
-			var container = _make('div',{id: 'question__container'});
-			var header = _make('div',{id: 'question__header'});
+		
 			var opCon = _make('div',{id: 'option__container'});
-			if(options.header){
-				header.innerHTML = options.header;
-				container.appendChild(header)
-			}
 			container.appendChild(opCon);
-			overlay.appendChild(container);
 			for(var opt in options.options){
 				option = _make('div',{class:'question__option',html: options.options[opt],'data-key': opt});
 				opCon.appendChild(option);
@@ -125,15 +130,46 @@ function Modal(options){
 					setTimeout(function(){
 						document.body.removeChild(overlay);
 					},100)
-				})
+				});
 			}
-			_frag.appendChild(overlay);
+		
+		break;
+		case 'body':
+
+
 		break;
 		default:
 
 		break;
 	}
-	return document.body&&document.body.appendChild(_frag);
+
+	//It's like blinking!!
+	setTimeout(function(){
+
+		_frag.appendChild(overlay);
+		document.body&&document.body.appendChild(_frag);
+			
+		//If it's outclickable
+		if(options.temp){
+			var _kill = function(e){
+				if(e.target == container ||container.contains(e.target)){
+					return;
+				}
+				else{
+					console.log(e);
+					//Remove the current function
+					document.removeEventListener('click',_kill);
+					//Remove the modal
+					setTimeout(function(){
+						document.body.removeChild(overlay);
+					},100);
+					console.log('died');
+				}
+
+			}
+			document.addEventListener('click',_kill);
+		}
+	},300);
 }
 
 

@@ -166,6 +166,19 @@
 					box-shadow: 0px 0px 2px #999;
 					cursor: pointer;
 				}
+					#break__button{
+						float: right;
+						margin-top: 5px;
+						padding: 7.5px;
+						font-size: 12px;
+						font-family: Open Sans;
+						border: 0;
+						cursor: pointer;
+						background-color: #3498db;
+						color: #FFF;
+						border-bottom: 2px solid rgba(0,0,0,0.1);
+					}
+
 
 				.schedule__info{
 					float: left;
