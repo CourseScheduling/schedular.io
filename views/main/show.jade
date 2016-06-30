@@ -80,6 +80,31 @@ block bodyContent
 			img(src="/img/schedular-snapcode.png" height="100px" style="margin-top: 30px;")
 			div(style="font-size: 12px;font-weight: 400;color: #999;font-family: Open Sans;margin-top: 20px;")  If all else fails, you can always snapchat us at: schedularteam
 
+		//Template for the break container, this thing is actually displayed so yea..
+		div.break__container
+			table.break__table
+				tr
+					td.break__box 
+					td.break__box Su
+					td.break__box Mo
+					td.break__box Tu
+					td.break__box We
+					td.break__box Th
+					td.break__box Fr
+					td.break__box Sa
+
+				each time, index in ['8 am','9 am','10 am','11 am','12 pm','1 pm','2 pm','3 pm','4 pm','5 pm','6 pm','7 pm','8 pm','9 pm','10 pm']
+					tr
+						td.break__box.break__box--leftLabel=time
+						td.break__box(data-col="0" data-row=index)
+						td.break__box(data-col="1" data-row=index)
+						td.break__box(data-col="2" data-row=index)
+						td.break__box(data-col="3" data-row=index)
+						td.break__box(data-col="4" data-row=index)
+						td.break__box(data-col="5" data-row=index)
+						td.break__box(data-col="6" data-row=index)
+
+
 
 
 				

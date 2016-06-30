@@ -178,6 +178,26 @@
 						color: #FFF;
 						border-bottom: 2px solid rgba(0,0,0,0.1);
 					}
+						.break__container{
+							text-align: center;
+							margin-top: 50px;
+						}
+							.break__table{
+								border-collapse: collapse;
+								margin: auto;
+							}
+								.break__box{
+									font-size: 12px;
+									border-bottom: 1px solid #DDD;
+									border-right: 1px solid #DDD;
+									min-width: 40px;
+									min-height: 20px;
+									cursor: pointer;
+								}
+								.break__box--leftLabel{
+									height: 22px;
+									border-bottom-color: #EEE;
+								}
 
 
 				.schedule__info{

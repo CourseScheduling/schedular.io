@@ -135,8 +135,7 @@ function Modal(options){
 		
 		break;
 		case 'body':
-
-
+			container.appendChild(options.body)
 		break;
 		default:
 

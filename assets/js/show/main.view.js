@@ -5,8 +5,9 @@ function View(){
 	};
 	
 	this._sCounter = 0;
-	this._templates = {};
 	this._disabled = false;
+	this._templates = {};
+	this._breaks = [];
 	
 	this.enableInfinite();
 	this.enableResponsive();
@@ -15,23 +16,19 @@ function View(){
 }
 
 
-new Modal({
-	type: 'body',
-	header: 'Drag out where your breaks are',
-	temp: true,
-	body: document.getElementById('break__body')
-});
 View.prototype.enableBreak = function(){
+	$this = this;
+	
 	var _btn = document.getElementById('break__button');
-
 	_btn.addEventListener('click', function(){
 
-new Modal({
-	type: 'body',
-	header: 'Drag out where your breaks are',
-	temp: true,
-	body: document.getElementById('break__body')
-});
+		new Modal({
+			type: 'body',
+			header: 'Drag out where your breaks are',
+			temp: true,
+			body: $this.gen('break__container')
+		});
+
 	});
 
 }
