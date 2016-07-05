@@ -147,7 +147,12 @@ function Modal(options){
 	setTimeout(function(){
 
 		_frag.appendChild(overlay);
-		document.body&&document.body.appendChild(_frag);
+
+		Velocity(overlay,'fadeIn',{
+			begin: function(){
+				document.body&&document.body.appendChild(_frag);		
+			}
+		});
 			
 		//If it's outclickable
 		if(options.temp){
@@ -162,7 +167,13 @@ function Modal(options){
 					//Remove the modal
 					setTimeout(function(){
 						_prevParent&&_prevParent.appendChild(_body);
-						document.body.removeChild(overlay);
+
+						Velocity(overlay,'fadeOut',{
+							complete: function(){
+								document.body.removeChild(overlay);
+							}
+						});
+
 					},100);
 					console.log('died');
 				}
