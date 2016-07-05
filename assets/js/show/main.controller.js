@@ -3,7 +3,6 @@ function Controller(){
 }
 
 Controller.prototype.start = function(){
-	console.log(Courses)
 	if(!Courses.length)
 		return Schedular.View.none();
 	this.prep();
@@ -87,7 +86,6 @@ Controller.prototype.schedule = function(){
 	var To = Infinity, Tn = -Infinity;
 	var Do = Infinity, Dn = -Infinity;
 	
-	console.log(possible)
 	var s = possible[0].length;
 	for(var i = possible.length;i--;){
 		var _schedule = possible[i];

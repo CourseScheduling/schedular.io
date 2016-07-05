@@ -199,6 +199,8 @@
 									border-bottom-color: #EEE;
 								}
 								.break__box[data-broken="true"]{
+									border-bottom: 0;
+									border-right: 0;
 									background-color: #F3C13A;
 									transition: background-color 0.2s;
 								}

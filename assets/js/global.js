@@ -195,6 +195,6 @@ n=null}var b,c,e;if(null!==a.count&&void 0!==a.count){b=a.count;c=[];for(a.count
 
 
 //Say hello.
-console.log("%c Yo","font-size:50px;color:#3498db;font-weight:100;font-family:Open Sans")
-console.log("%c wanna help out with schedular?","font-size:12px;color:#3498db;font-weight:100;font-family:Open Sans")
-console.log("%c email me at joseph.thomas@student.ufv.ca","font-size:12px;color:#3498db;font-weight:100;font-family:Open Sans")
+console.log("%c Yo","font-size:50px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
+console.log("%c wanna help out with schedular?","font-size:12px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
+console.log("%c email me at joseph.thomas@student.ufv.ca","font-size:12px;color:#3498db;font-weight:100;font-family:Calibri, Arial")

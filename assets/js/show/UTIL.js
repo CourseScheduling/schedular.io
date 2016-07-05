@@ -225,7 +225,6 @@ window.getParam = function(name, url) {
 
 Node.prototype.listen	=	function(obj){
 	for(var event in obj){
-		console.log(event);
 		this.addEventListener(event,obj[event]);
 	}
 }

@@ -16,6 +16,16 @@ function View(){
 }
 
 
+
+View.prototype.break = function(el){
+	$this = this;
+	console.log(el);
+	el.addEventListener('click',function(){
+		$this.toggleBreak(el);
+	});
+}
+
+
 View.prototype.enableBreak = function(){
 	$this = this;
 	
@@ -31,10 +41,15 @@ View.prototype.enableBreak = function(){
 
 	});
 
+	var _boxes = document.getElementsByClassName('break__box--click');
+	[].forEach.call(_boxes,function(box){
+		$this.break(box);
+	})
 }
 
 
 View.prototype.toggleBreak = function(el){
+	console.log(el)
 	var _day = parseInt(el.getAttribute('data-col'));
 	var _time = parseInt(el.getAttribute('data-row'));
 
@@ -45,6 +60,9 @@ View.prototype.toggleBreak = function(el){
 	//Legit toggle the element attribute
 	el.setAttribute('data-broken',(_broken? '' : 'true'));
 }
+
+
+
 
 
 
@@ -85,7 +103,7 @@ View.prototype.render = function(num){
 	
 	this._sCounter += num;
 	
-	console.info("Finished rendering " + num + " schedules in" + (Date.now()-_start) + "ms");
+	console.info("Finished rendering " + num + " schedules in " + (Date.now()-_start) + "ms");
 
 }
 
@@ -124,7 +142,6 @@ View.prototype.addProfs = function(wrapper,schedule){
 			var _line = this.gen('schedule__infoLine');
 			var _b = document.createElement('br');
 			_line.children[0].innerHTML = _schedule.title+' '+_schedule.section;
-			console.log(_schedule.profs)
 			_line.children[1].innerHTML = _schedule.profs[p].name||'{Unknown}';
 			_line.children[2].innerHTML = _schedule.profs[p].rating||'';
 
