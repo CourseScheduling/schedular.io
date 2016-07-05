@@ -151,8 +151,9 @@ function Modal(options){
 		Velocity(overlay,'fadeIn',{
 			begin: function(){
 				document.body&&document.body.appendChild(_frag);		
-			}
-		});
+			},
+			duration: 200
+		},100);
 			
 		//If it's outclickable
 		if(options.temp){
@@ -161,7 +162,6 @@ function Modal(options){
 					return;
 				}
 				else{
-					console.log(e);
 					//Remove the current function
 					document.removeEventListener('click',_kill);
 					//Remove the modal
@@ -171,11 +171,11 @@ function Modal(options){
 						Velocity(overlay,'fadeOut',{
 							complete: function(){
 								document.body.removeChild(overlay);
-							}
+							},
+							duration: 200
 						});
 
 					},100);
-					console.log('died');
 				}
 
 			}

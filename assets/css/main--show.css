@@ -188,22 +188,28 @@
 							}
 								.break__box{
 									font-size: 12px;
-									border-bottom: 1px solid #DDD;
-									border-right: 1px solid #DDD;
 									min-width: 40px;
 									min-height: 20px;
 									cursor: pointer;
 								}
-								.break__box--leftLabel{
-									height: 22px;
-									border-bottom-color: #EEE;
-								}
-								.break__box[data-broken="true"]{
-									border-bottom: 0;
-									border-right: 0;
-									background-color: #F3C13A;
-									transition: background-color 0.2s;
-								}
+									.break__box--topLabel{
+										border-bottom: 1px solid #EEE;
+									}
+									.break__box--leftLabel{
+										height: 22px;
+										border-bottom-color: #FFF;
+										border-right: 1px solid #EEE;
+									}
+									.break__box--click{
+										border-bottom: 1px solid #EEE;
+										border-right: 1px solid #EEE;
+									}	
+									.break__box[data-broken="true"]{
+										border-bottom: 0;
+										border-right: 0;
+										background-color: #F3C13A;
+										transition: background-color 0.2s;
+									}
 
 
 				.schedule__info{

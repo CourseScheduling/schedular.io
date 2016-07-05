@@ -19,11 +19,45 @@ function View(){
 
 View.prototype.break = function(el){
 	$this = this;
-
-	el.onclick = function(){
-		$this.toggleBreak(el);
-		console.log(el)
+	var _current = [],_end = [];
+	
+	//Just wanted a quick left button solution
+	var _leftButton = function(evt) {
+	    evt = evt || window.event;
+	    if ("buttons" in evt) {
+	        return evt.buttons == 1;
+	    }
+	    var button = evt.which || evt.button;
+	    return button == 1;
 	}
+
+
+	el.addEventListener('mousedown',function(){
+
+		_current = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
+
+	});
+
+	el.addEventListener('mouseup',function(e){
+		
+		_end = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
+
+		if(_end[0] == _current[0] && _end[1] == _current[1]){
+			return $this.toggleBreak(el);
+		}
+
+		//Since this is multiple selection, iterate through all the blocks
+		for(var col = Math.min(_current[0],_end[0]),col <= Math.max(_current[0],_end[0]);col++){
+			for(var row = Math.min(_current[1],_end[1]),row <= Math.max(_current[1],_end[1]);row++){
+
+				//Since we have a block, toggle it with override
+				var _el = document.querySelector('[data-row="0"][data-col="0"]');
+				$this.toggleBreak(_el,)
+			}
+		}
+
+
+	});
 
 }
 
@@ -50,8 +84,7 @@ View.prototype.enableBreak = function(){
 }
 
 
-View.prototype.toggleBreak = function(el){
-	console.log(el)
+View.prototype.toggleBreak = function(el,override){
 	var _day = parseInt(el.getAttribute('data-col'));
 	var _time = parseInt(el.getAttribute('data-row'));
 
@@ -59,8 +92,8 @@ View.prototype.toggleBreak = function(el){
 
 	_time = ((_time * 60) + 480);
 
-	//Legit toggle the element attribute
-	el.setAttribute('data-broken',(_broken? '' : 'true'));
+	//Legit toggle the element attribute, unless override is enabled
+	el.setAttribute('data-broken',(_broken? (override? 'true': '') : 'true'));
 }
 
 
