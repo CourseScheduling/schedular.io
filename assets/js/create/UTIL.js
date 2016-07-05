@@ -191,24 +191,3 @@ UTIL.helper.localStorage	=	(function(window) {
   }
 })(window);
 
-
-
-/*
-* Get the university code from the user
-*/
-
-if(!UTIL.helper.localStorage.get('UNIVERSITY')){
-
-	new Modal({
-		type: 'select',
-		header: "<strong>Hey!</strong> What university do you go to?",
-		options: {
-			sfu: 'SFU - Simon Fraser University',
-			ufv: 'UFV - University of the Fraser Valley'
-		},
-		onChoice: function(uni){
-			UTIL.helper.localStorage.set('UNIVERSITY',uni,Date.now());
-		}
-	});
-
-}

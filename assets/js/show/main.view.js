@@ -34,6 +34,16 @@ View.prototype.enableBreak = function(){
 }
 
 
+View.prototype.addBreak = function(el){
+	var _day = parseInt(el.getAttribute('data-col'));
+	var _time = parseInt(el.getAttribute('data-row'));
+
+	_time = ((_time * 60) + 480)
+	console.log(_day,_time)
+}
+
+
+
 
 
 View.prototype.render = function(num){
