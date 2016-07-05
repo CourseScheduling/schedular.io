@@ -135,7 +135,8 @@ function Modal(options){
 		
 		break;
 		case 'body':
-			container.appendChild(options.body)
+			var _prevParent = options.body.parentNode;
+			var _body = container.appendChild(options.body)
 		break;
 		default:
 
@@ -160,6 +161,7 @@ function Modal(options){
 					document.removeEventListener('click',_kill);
 					//Remove the modal
 					setTimeout(function(){
+						_prevParent&&_prevParent.appendChild(_body);
 						document.body.removeChild(overlay);
 					},100);
 					console.log('died');

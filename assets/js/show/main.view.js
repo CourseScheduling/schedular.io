@@ -19,10 +19,12 @@ function View(){
 
 View.prototype.break = function(el){
 	$this = this;
-	console.log(el);
-	el.addEventListener('click',function(){
+
+	el.onclick = function(){
 		$this.toggleBreak(el);
-	});
+		console.log(el)
+	}
+
 }
 
 
@@ -36,7 +38,7 @@ View.prototype.enableBreak = function(){
 			type: 'body',
 			header: 'Drag out where your breaks are',
 			temp: true,
-			body: $this.gen('break__container')
+			body: document.getElementsByClassName('break__container')[0]
 		});
 
 	});
