@@ -84,18 +84,18 @@ block bodyContent
 		div.break__container
 			table.break__table
 				tr
-					td.break__box 
-					td.break__box.break__box--topLabel Su
-					td.break__box.break__box--topLabel Mo
-					td.break__box.break__box--topLabel Tu
-					td.break__box.break__box--topLabel We
-					td.break__box.break__box--topLabel Th
-					td.break__box.break__box--topLabel Fr
-					td.break__box.break__box--topLabel Sa
+					td.break__box.no_s
+					td.break__box.break__box--topLabel.no_s Su
+					td.break__box.break__box--topLabel.no_s Mo
+					td.break__box.break__box--topLabel.no_s Tu
+					td.break__box.break__box--topLabel.no_s We
+					td.break__box.break__box--topLabel.no_s Th
+					td.break__box.break__box--topLabel.no_s Fr
+					td.break__box.break__box--topLabel.no_s Sa
 
 				each time, index in ['8 am','9 am','10 am','11 am','12 pm','1 pm','2 pm','3 pm','4 pm','5 pm','6 pm','7 pm','8 pm','9 pm','10 pm']
 					tr
-						td.break__box.break__box--leftLabel=time
+						td.break__box.break__box--leftLabel.no_s=time
 						td.break__box.break__box--click(data-col="0" data-row=index)
 						td.break__box.break__box--click(data-col="1" data-row=index)
 						td.break__box.break__box--click(data-col="2" data-row=index)

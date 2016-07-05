@@ -8,7 +8,8 @@ function View(){
 	this._disabled = false;
 	this._templates = {};
 	this._breaks = [];
-	
+	this._breakBoxCurrent = [];
+
 	this.enableInfinite();
 	this.enableResponsive();
 	this.enableSliders();
@@ -20,26 +21,31 @@ function View(){
 View.prototype.break = function(el){
 	$this = this;
 	var _current = [],_end = [];
-	
+
 	//Just wanted a quick left button solution
 	var _leftButton = function(evt) {
 	    evt = evt || window.event;
-	    if ("buttons" in evt) {
-	        return evt.buttons == 1;
-	    }
-	    var button = evt.which || evt.button;
-	    return button == 1;
+	    return (evt.which == 3)
+	}
+	var _disableContext = function(e){
+		e.preventDefault();
+		console.log(e);
+		return false;
 	}
 
 
 	el.addEventListener('mousedown',function(){
 
-		_current = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
-
+		$this._breakBoxCurrent = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
+		document.onContextMenu = _disableContext;
 	});
 
 	el.addEventListener('mouseup',function(e){
-		
+		//Check if the left button is being pressed;
+		e.preventDefault();
+		var _left = _leftButton(e);
+		_current = $this._breakBoxCurrent;
+
 		_end = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
 
 		if(_end[0] == _current[0] && _end[1] == _current[1]){
@@ -47,16 +53,18 @@ View.prototype.break = function(el){
 		}
 
 		//Since this is multiple selection, iterate through all the blocks
-		for(var col = Math.min(_current[0],_end[0]),col <= Math.max(_current[0],_end[0]);col++){
-			for(var row = Math.min(_current[1],_end[1]),row <= Math.max(_current[1],_end[1]);row++){
+		for(var col = Math.min(_current[0],_end[0]);col <= Math.max(_current[0],_end[0]);col++){
+			for(var row = Math.min(_current[1],_end[1]);row <= Math.max(_current[1],_end[1]);row++){
 
 				//Since we have a block, toggle it with override
-				var _el = document.querySelector('[data-row="0"][data-col="0"]');
-				$this.toggleBreak(_el,)
+				var _el = document.querySelector('[data-row="'+row+'"][data-col="'+col+'"]');
+				
+				//If the left mouse is down, switch to a negative override
+				$this.toggleBreak(_el,(_left ? -1 : 1));
 			}
 		}
 
-
+		document.onContextMenu = null;
 	});
 
 }
@@ -93,7 +101,11 @@ View.prototype.toggleBreak = function(el,override){
 	_time = ((_time * 60) + 480);
 
 	//Legit toggle the element attribute, unless override is enabled
-	el.setAttribute('data-broken',(_broken? (override? 'true': '') : 'true'));
+	if(override){
+		el.setAttribute('data-broken',(override == -1? '' : 'true'));
+	}else{
+		el.setAttribute('data-broken',(_broken? '' : 'true'));
+	}
 }
 
 
