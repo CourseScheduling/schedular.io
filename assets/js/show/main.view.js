@@ -34,12 +34,16 @@ View.prototype.enableBreak = function(){
 }
 
 
-View.prototype.addBreak = function(el){
+View.prototype.toggleBreak = function(el){
 	var _day = parseInt(el.getAttribute('data-col'));
 	var _time = parseInt(el.getAttribute('data-row'));
 
-	_time = ((_time * 60) + 480)
-	console.log(_day,_time)
+	var _broken = el.getAttribute('data-broken');
+
+	_time = ((_time * 60) + 480);
+
+	//Legit toggle the element attribute
+	el.setAttribute('data-broken',(_broken? '' : 'true'));
 }
 
 

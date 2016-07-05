@@ -198,6 +198,10 @@
 									height: 22px;
 									border-bottom-color: #EEE;
 								}
+								.break__box[data-broken="true"]{
+									background-color: #F3C13A;
+									transition: background-color 0.2s;
+								}
 
 
 				.schedule__info{
