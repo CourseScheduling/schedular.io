@@ -29,7 +29,6 @@ View.prototype.break = function(el){
 	}
 	var _disableContext = function(e){
 		e.preventDefault();
-		console.log(e);
 		return false;
 	}
 
@@ -37,12 +36,15 @@ View.prototype.break = function(el){
 	el.addEventListener('mousedown',function(){
 
 		$this._breakBoxCurrent = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
-		document.onContextMenu = _disableContext;
+		document.addEventListener("contextmenu", function(e){
+		    e.preventDefault();
+		}, false);
 	});
+
 
 	el.addEventListener('mouseup',function(e){
 		//Check if the left button is being pressed;
-		e.preventDefault();
+		el.onContextMenu = _disableContext;
 		var _left = _leftButton(e);
 		_current = $this._breakBoxCurrent;
 
@@ -58,7 +60,7 @@ View.prototype.break = function(el){
 
 				//Since we have a block, toggle it with override
 				var _el = document.querySelector('[data-row="'+row+'"][data-col="'+col+'"]');
-				
+
 				//If the left mouse is down, switch to a negative override
 				$this.toggleBreak(_el,(_left ? -1 : 1));
 			}
