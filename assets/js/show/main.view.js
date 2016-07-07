@@ -36,15 +36,12 @@ View.prototype.break = function(el){
 	el.addEventListener('mousedown',function(){
 
 		$this._breakBoxCurrent = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
-		document.addEventListener("contextmenu", function(e){
-		    e.preventDefault();
-		}, false);
+		document.addEventListener("contextmenu",_disableContext, false);
 	});
 
 
 	el.addEventListener('mouseup',function(e){
 		//Check if the left button is being pressed;
-		el.onContextMenu = _disableContext;
 		var _left = _leftButton(e);
 		_current = $this._breakBoxCurrent;
 
@@ -65,8 +62,7 @@ View.prototype.break = function(el){
 				$this.toggleBreak(_el,(_left ? -1 : 1));
 			}
 		}
-
-		document.onContextMenu = null;
+		document.removeEventListener("contextmenu",_disableContext,false);
 	});
 
 }
