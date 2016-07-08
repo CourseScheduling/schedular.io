@@ -171,6 +171,7 @@ function Modal(options){
 						Velocity(overlay,'fadeOut',{
 							complete: function(){
 								document.body.removeChild(overlay);
+								options.end&&options.end();
 							},
 							duration: 200
 						});

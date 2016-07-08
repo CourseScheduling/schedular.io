@@ -78,7 +78,15 @@ View.prototype.enableBreak = function(){
 			type: 'body',
 			header: 'Drag out where your breaks are',
 			temp: true,
-			body: document.getElementsByClassName('break__container')[0]
+			body: document.getElementsByClassName('break__container')[0],
+			end: function(){
+				var selected = document.querySelectorAll('[data-broken="1"]');
+				$this._breaks = [];
+				[].forEach.call(selected, function(block){
+					$this._breaks.push([parseInt(block.getAttribute('data-col')),parseInt(block.getAttribute('data-row'))]);
+					$this.setBreaks();
+				});
+			}
 		});
 
 	});
@@ -106,7 +114,22 @@ View.prototype.toggleBreak = function(el,override){
 	}
 }
 
+View.prototype.setBreaks = function(){
+	var days = [[],[],[],[],[],[],[]];
+	var breaks = [];
+	this._breaks.forEach(function(break){
+		days[break[0]].push(break[1]);
+	});
 
+	for(var day = 0;day < 7;day++){
+		for(var i = 1,ii = days[day].length;i < ii;i++){
+			days[day][ii]
+		}
+	}
+
+
+
+}
 
 
 
