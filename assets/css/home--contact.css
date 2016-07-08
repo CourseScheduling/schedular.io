@@ -1,14 +1,24 @@
-
 #page__wrapper{
-	max-width: 1000px;
 	width: 80%;
-	margin: auto;
-	margin-top: 40px;
-	display: inline-block;
-	text-align: left;
-}
-	#page__title{
-		font-size: 30px;
-		font-family: Raleway;
-		font-weight: 300;
+	margin-top: 10px;
+	margin-left: 10%;
+	float: left;
+	text-align: center;
+}	
+	#page__container{
+		max-width: 600px;
+		margin: auto;
+		width: 100%;
 	}
+		#page__title{
+			font-size: 30px;
+			font-family: Raleway;
+			font-weight: 300;
+			margin-top: 40px;
+		}
+		#page__content{
+			font-size: 14px;
+			font-weight: 400;
+			font-family: Open Sans;
+			margin-top: 30px;
+		}
