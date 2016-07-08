@@ -17,7 +17,6 @@ function View(){
 }
 
 
-
 View.prototype.break = function(el){
 	$this = this;
 	var _current = [],_end = [];
