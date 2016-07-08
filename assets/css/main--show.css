@@ -205,8 +205,8 @@
 										border-right: 1px solid #EEE;
 									}	
 									.break__box[data-broken="true"]{
-										border-bottom-color: #999;
-										border-right-color: #999;
+										border-bottom-color: #FFF;
+										border-right-color: #FFF;
 										background-color: #F3C13A;
 										transition: background-color 0.2s;
 									}

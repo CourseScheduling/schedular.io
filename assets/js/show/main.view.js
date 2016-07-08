@@ -35,7 +35,7 @@ View.prototype.break = function(el){
 	el.addEventListener('mousedown',function(){
 
 		$this._breakBoxCurrent = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
-		document.addEventListener("contextmenu",_disableContext, false);
+		document.addEventListener("contextmenu",_disableContext);
 	});
 
 
@@ -61,7 +61,7 @@ View.prototype.break = function(el){
 				$this.toggleBreak(_el,(_left ? -1 : 1));
 			}
 		}
-		document.removeEventListener("contextmenu",_disableContext,false);
+		document.removeEventListener("contextmenu",_disableContext);
 	});
 
 }
@@ -116,8 +116,8 @@ View.prototype.toggleBreak = function(el,override){
 View.prototype.setBreaks = function(){
 	var days = [[],[],[],[],[],[],[]];
 	var breaks = [];
-	this._breaks.forEach(function(break){
-		days[break[0]].push(break[1]);
+	this._breaks.forEach(function(breakBlock){
+		days[breakBlock[0]].push(breakBlock[1]);
 	});
 
 	for(var day = 0;day < 7;day++){
