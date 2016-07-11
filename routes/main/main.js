@@ -9,5 +9,8 @@ router.get('/s',function *(){
 	this.render('main/show');
 });
 
+router.get('/b',function *(){
+	this.render('main/board');
+});
 
 module.exports = router;

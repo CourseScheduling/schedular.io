@@ -1,0 +1,99 @@
+extends __template
+
+block headContent
+	title Schedular.io · Board
+	style.
+		#main__wrap{
+			width: 100%;
+			height: 100%;
+			display: inline-block;
+		}
+		#bigBoard{
+			height: 700px;
+			width: 500px;
+			box-shadow: 0px 0px 3px #BBB;
+			margin-top: 50px;
+			position: relative;
+		}
+		#board__dayWrap{
+			float: right;
+			width: 100%;
+			border-bottom: 1px solid #DDD;
+		}
+			.board__day{
+				width: 12.5%;
+				border-right: 1px solid #DDD;
+				height: 6.25%;
+				display: inline-block;
+				font-size: 11px;
+				padding: 15px 2px 15px 2px;
+				box-sizing: border-box;
+				text-align: center;
+				font-family: Open Sans;
+				color: #444;
+				font-weight: 300;
+			}
+			.board__day--last{
+				border-right: 0;
+			}
+		#board__timeWrap{
+			float: left;
+			height: 100%;
+			width: 12.5%;
+		}
+			.board__time{
+				height: 6.25%;
+				border-bottom: 1px solid #DDD;
+				border-right: 1px solid #DDD;
+				text-align: center;
+				font-family: Open Sans;
+				color: #444;
+				font-weight: 300;
+				font-size: 11px;
+				padding: 15px 2px 15px 2px;
+				box-sizing: border-box;
+			}
+			.board__time--last{
+				border-bottom: 0;
+			}
+		#board__blockContainer{
+			width: 87.5%;
+			float: right;
+			height: 93.75%;
+			position: relative;
+		}
+			.board__timeBlock{
+				width: 14.2857143%;
+				background-color: #DDD;
+				border: 1px solid rgba(255,255,255,0.6);
+				box-sizing: border-box;
+				text-align: center;
+				font-family: Open Sans;
+				color: #FFF;
+				font-weight: 300;
+				font-size: 11px;
+				border-radius: 2px;
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+block bodyContent
+	div#main__wrap
+		div#bigBoard
+			div#board__dayWrap
+				div.board__day &nbsp;
+				div.board__day Sunday
+				div.board__day Monday
+				div.board__day Tuesday
+				div.board__day Wednesday
+				div.board__day Thursday
+				div.board__day Friday
+				div.board__day.board__day--last Saturday
+			div#board__timeWrap
+				each time, index in ['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm']
+					div.board__time=time
+				div.board__time.board__time--last 10:00 pm
+			div#board__blockContainer
+	script(src="/js/show/UTIL.js")
+	script(src="/js/board/main.js")
