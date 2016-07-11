@@ -19,7 +19,7 @@ Board.prototype.add = function(timeArr,name,temp){
 	
 		var _actHeight = _block
 
-		var _block = _make('div',{class: 'board__timeBlock '+_uniqid, html: name});
+		var _block = _make('div',{dataBlock: _uniqid, class: 'board__timeBlock '+_uniqid, html: name});
 		_style(_block,{
 			top: ((100 * _start) / this.bHeight) + '%',
 			left: ((100 / 7) * _day) + '%',
