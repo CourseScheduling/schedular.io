@@ -4,5 +4,10 @@ var ajax = require('./Ajax.js');
 
 // Returns the lines of data.
 b.split('\n').filter(function(line){
- return line.substr(0,6).match(/\d{5}/)
+	return line.substr(0,6).match(/\d{5}/)
+}).map(function(line){
+	return line.substr(1).split('|').map((arr) => (arr.trim()))
+}).map(function(arr){
+	var crn = arr[0].substr(0,5);
+	var max = arr[1].substr();
 });
