@@ -28,11 +28,11 @@ Board.prototype.add = function(timeArr,name,temp){
 
 		var _block = _make('div',{dataBlock: _uniqid, class: 'board__timeBlock '+_uniqid, html: name});
 		_style(_block,{
-			top: ((100 * _start) / this.bHeight) + '%',
+			top: ((100 * (_start - 480)) / this.bHeight) + '%',
 			left: ((100 / 7) * _day) + '%',
 			height: ((100 * (_end - _start)) / this.bHeight)+ '%',
 			backgroundColor: UTIL.helper.color.bgColor(name),
-			opacity: (1 - (0.5*~~temp))
+			opacity: (1 - (0.2*~~temp))
 		});
 		this.board.appendChild(_block);
 	}
@@ -40,6 +40,8 @@ Board.prototype.add = function(timeArr,name,temp){
 }
 
 Board.prototype.remove = function(_uniqid){
+	if(!_uniqid) return;
+
 	var _board = this.board;
 	var _blocks = _board.getElementsByClassName(_uniqid);
 	while(_blocks.length)

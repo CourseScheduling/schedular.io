@@ -96,7 +96,12 @@ block headContent
 				border-bottom: 1px solid #DDD;
 				outline: 0;
 				height: 46px;
+				transition: border-bottom-color .25s;
 			}
+				#instant__input:focus{
+					border-bottom-color: #1ABEEE;
+					transition: border-bottom-color .25s;
+				}
 		#resultTemplate{
 			display: none;
 		}
@@ -109,7 +114,10 @@ block headContent
 			background-color: #FFF;
 		}
 		.result__container:hover{
-			background-color: #89C4F4;
+			background-color: rgba(137,196,244,0.2);
+		}
+		.result__container:hover .result__section{
+			color: #FFF;
 		}
 			.result__header{
 				font-weight: 600;
@@ -121,6 +129,20 @@ block headContent
 				display: none;
 				padding-top: 5px;
 			}
+				.result__sections--divider{
+					margin-top: 4px;
+					margin-bottom: 4px;
+					width: 100%;
+					border-top: 0;
+					display: block;
+				}
+				.result__section{
+					padding: 4px 7px 4px 7px;
+					background-color: #1abc9c;
+					border-radius: 2px;
+					display: inline-block;
+					margin: 2px;
+				}
 block bodyContent
 	div#main__wrap
 		div#bigBoard

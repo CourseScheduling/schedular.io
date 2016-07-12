@@ -158,14 +158,38 @@ Instant.prototype.showDrop = function(){
 
 Instant.prototype.addCourse = function(el, course){
 	var _this = this;
-	
+	var _make = UTIL.helper.element.create;
+	var hover = function(_sec,section){
+		var things = [];
+		_sec.addEventListener('mouseover',function(){
+			var timeArr = [];
+			console.log(section)
+			var time = section.times;
+			for(var i = 0;i < 7;i++){
+				if(!time[i]) continue;
+				timeArr.push(time[i].concat([i]));
+			}
+			things.push(Board.add(timeArr,section.title,false))
+		});
+
+		_sec.addEventListener('mouseout',function(){
+			things.forEach(function(b){Board.remove(b)});
+			things = [];
+		});
+	}
 	return function(){
 		_this.getCourse(course, function(a){
 			a = a[0]
 			var wrap = el.getElementsByClassName('result__sections')[0];
 			for(var type in a.sections){
-				for(var i = 0, ii = a.sections[type].length;i < ii;i++){
-					wrap.innerHTML += a.sections[type][i].section + ' ';
+				if(a.sections[type].length){
+					wrap.appendChild(_make('div',{class:'result__sections result__sections--divider'}));
+
+					for(var i = 0, ii = a.sections[type].length;i < ii;i++){
+						var _sec = _make('div',{class:'result__section',html: a.sections[type][i].section});
+						wrap.appendChild(_sec);
+						hover(_sec,a.sections[type][i]);
+					}
 				}
 			}
 			Velocity(wrap, 'slideDown',DROP_SPEED);
