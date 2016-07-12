@@ -18,7 +18,7 @@ function Instant(options){
 	this.buttons = options.buttons;
 	this.templates = {};
 	this.courses = {};
-	
+	this._courseHash = {};
 	//Create the templates
 	for(var template in options.templates){
 		this.templates[template] = options.templates[template].cloneNode(true);
@@ -93,7 +93,7 @@ Instant.prototype.fillDrop = function(data){
 		var _result = this.templates.result.cloneNode(true);
 		_result.getElementsByClassName('result__header')[0].innerHTML = data[i].title;
 		_result.getElementsByClassName('result__body')[0].innerHTML = data[i].name;
-		_result.onclick	=	this.addCourse(data[i].title);
+		_result.onclick	=	this.addCourse(_result, data[i].title);
 		this.dropDown.appendChild(_result);
 	}
 }
@@ -156,10 +156,21 @@ Instant.prototype.showDrop = function(){
 *	Instant.addCourse - the method that adds the course to the courseContainer
 */
 
-Instant.prototype.addCourse = function(course){
+Instant.prototype.addCourse = function(el, course){
 	var _this = this;
 	
 	return function(){
+		_this.getCourse(course, function(a){
+			a = a[0]
+			var wrap = el.getElementsByClassName('result__sections')[0];
+			for(var type in a.sections){
+				for(var i = 0, ii = a.sections[type].length;i < ii;i++){
+					wrap.innerHTML += a.sections[type][i].uniq;
+				}
+			}
+			Velocity(wrap, 'slideDown',DROP_SPEED);
+		});
+		/*
 		_this.hideDrop();
 		
 		if(_this.courses[course])
@@ -177,7 +188,7 @@ Instant.prototype.addCourse = function(course){
 		
 		_this.courseContainer.appendChild(_course);
 		_course.addEventListener('click',_this.destroyCourse(_course,course));
-		_this.input.value = '';
+		_this.input.value = '';*/
 	}
 }
 
@@ -200,7 +211,28 @@ Instant.prototype.destroyCourse = function(course,title){
 }
 
 
+/*
+*	Instant.getCourse - grabs the course and all the section data from the API
+*/
 
+Instant.prototype.getCourse = function(title, callback){
+	var _this = this;
+	var _token = UTIL.helper.localStorage.get('token');
+	var _uni = UTIL.helper.localStorage.get('UNIVERSITY');
+	var _url = ('/api/v1/'+_uni+'/courses?courses='+title);
+	if(this._courseHash[title]){
+		return callback&&callback(this._courseHash[title]);
+	}
+
+	$.get({
+		token: _token,
+		url: _url,
+		done: function(data){
+			_this._courseHash[title] = data;
+			callback&&callback(data);
+		}
+	});
+}
 
 
 //Create the instant object

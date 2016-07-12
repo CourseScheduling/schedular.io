@@ -113,6 +113,12 @@ block headContent
 			.result__header{
 				font-weight: 600;
 			}
+			.result__sections{
+				width: 100%;
+				margin-top: 5px;
+				border-top: 1px solid #DDD;
+				display: none;
+			}
 block bodyContent
 	div#main__wrap
 		div#bigBoard
@@ -139,6 +145,7 @@ block bodyContent
 	div.result__container#resultTemplate
 		div.result__header 
 		div.result__body
+		div.result__sections
 	script(src="/js/show/UTIL.js")
 	script(src="/js/board/main.js")
 	script(src="/js/board/search.js")
