@@ -1,12 +1,19 @@
 function Board(options){
 	this.board = options.board;
 	this.bHeight = parseInt(window.getComputedStyle(this.board).height);
+	this.courses = [];
 }
 
 Board.prototype.add = function(timeArr,name,temp){
 	var _make = UTIL.helper.element.create;
 	var _style = UTIL.helper.element.editStyle;
 	var _uniqid = '$block_'+Math.random().toString(36).substr(10);
+	if(!temp){
+		this.courses.push({
+			name: name,
+			times: timeArr
+		});
+	}
 	// TimeArr is an array of time block.
 	// Each timeBlock should be of the following format
 	// [START_TIME, END_TIME, DAY]
