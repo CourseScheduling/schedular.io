@@ -85,7 +85,9 @@ Controller.prototype.schedule = function(){
 	
 	var To = Infinity, Tn = -Infinity;
 	var Do = Infinity, Dn = -Infinity;
-	
+	if(possible.length == 0){
+		return Schedular.View.none();
+	}
 	var s = possible[0].length;
 	for(var i = possible.length;i--;){
 		var _schedule = possible[i];
@@ -182,5 +184,5 @@ Controller.prototype.sort = function(){
 	this.Schedules.sort(function(a,b){
 		return (Math.abs(a.time - _time)-Math.abs(b.time - _time)) || (Math.abs(a.time - _density)-Math.abs(b.time - _density));
 	});
-console.info("Sorted in "+(Date.now()-s)+"ms");
+	console.info("Sorted in "+(Date.now()-s)+"ms");
 }

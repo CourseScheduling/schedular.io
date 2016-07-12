@@ -165,7 +165,7 @@ Instant.prototype.addCourse = function(el, course){
 			var wrap = el.getElementsByClassName('result__sections')[0];
 			for(var type in a.sections){
 				for(var i = 0, ii = a.sections[type].length;i < ii;i++){
-					wrap.innerHTML += a.sections[type][i].uniq;
+					wrap.innerHTML += a.sections[type][i].section + ' ';
 				}
 			}
 			Velocity(wrap, 'slideDown',DROP_SPEED);
