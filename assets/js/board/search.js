@@ -1,5 +1,5 @@
 //Intialize the constants
-var DROP_SPEED = 300;
+var DROP_SPEED = 100;
 
 /*
 *	@class Instant
@@ -205,14 +205,12 @@ Instant.prototype.destroyCourse = function(course,title){
 
 //Create the instant object
 window.Instant = new Instant({
-	input: document.getElementById('courseInput'),
-	dropDown: document.getElementById('dropDown'),
+	input: document.getElementById('instant__input'),
+	dropDown: document.getElementById('dropdown'),
 	courseContainer: document.getElementById('courseContainer'),
 	templates:{
-		result: document.getElementById('resultTemplate'),
-		course: document.getElementById('courseTemplate')
-	},
-	buttons: document.getElementsByClassName('main__button')
+		result: document.getElementById('resultTemplate')
+	}
 });
 
 

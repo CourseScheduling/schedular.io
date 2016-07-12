@@ -11,9 +11,11 @@ block headContent
 		#bigBoard{
 			height: 700px;
 			width: 500px;
-			box-shadow: 0px 0px 3px #BBB;
 			margin-top: 50px;
+			border-radius: 2px;
 			position: relative;
+			border: 1px solid #DDD;
+			float: left;
 		}
 		#board__dayWrap{
 			float: right;
@@ -78,6 +80,39 @@ block headContent
 				align-items: center;
 				justify-content: center;
 			}
+		#instant{
+			float: right;
+			width: 400px;
+			margin-top: 50px;
+		}
+			#instant__input{
+				padding: 10px;
+				font-size: 12px;
+				font-weight: 400;
+				color: #999;
+				width: 100%;
+				font-family: Open Sans;
+				border: 0;
+				border-bottom: 1px solid #DDD;
+				outline: 0;
+				height: 46px;
+			}
+		#resultTemplate{
+			display: none;
+		}
+		.result__container{
+			width: 100%;
+			font-family: Open Sans;
+			font-size: 12px;
+			cursor: pointer;
+			padding: 5px;
+		}
+		.result__container:hover{
+			background-color: #89C4F4;
+		}
+			.result__header{
+				font-weight: 600;
+			}
 block bodyContent
 	div#main__wrap
 		div#bigBoard
@@ -95,5 +130,15 @@ block bodyContent
 					div.board__time=time
 				div.board__time.board__time--last 10:00 pm
 			div#board__blockContainer
+		div#instant
+			input#instant__input(placeholder="Find Some Courses")
+			div#dropdown
+
+
+
+	div.result__container#resultTemplate
+		div.result__header 
+		div.result__body
 	script(src="/js/show/UTIL.js")
 	script(src="/js/board/main.js")
+	script(src="/js/board/search.js")
