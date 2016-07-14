@@ -11,3 +11,42 @@ b.split('\n').filter(function(line){
 	var crn = arr[0].substr(0,5);
 	var max = arr[1].substr();
 });
+
+
+
+var n = b.split('\n')[0].split(' ').filter((i) => (i))[2].split(':');
+var time = ((n[0] * 60) + (~~n[1]));
+
+
+
+
+if(oldTime !== null){
+	if(time - oldTime){
+
+	}
+}
+
+
+/*
+	The protocol
+	- Do a request, get old time
+	- Do a request in constant intervals.
+	- Once a change in time is detected,
+	- Update based on the new interval
+	
+	- Check every interval, if not in an accepted error rate, update.
+	- 
+
+
+
+*/
+
+
+
+/*
+	Every 5 minutes, delete a thing
+	
+*/
+
+
+
