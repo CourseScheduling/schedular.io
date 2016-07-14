@@ -57,17 +57,17 @@ if(oldTime !== null){
 
 
 function UFV(){
-	//This is 10 minutes
+	// This is 10 minutes
 	this.NORMAL_INTERVAL = 120000;
 	this.baseURL = 'http://ufv.ca/arfiles/Banner_Size_Sect_CR.txt';
 	this._oldTime = 0;
+	this._interval = 0;
 	this.data = null;
 }
 
 
 /*
 * UFV.start - starts the polling, begins by trying to find the update time
-*
 */
 
 UFV.prototype.start = function(){
@@ -78,11 +78,12 @@ UFV.prototype.start = function(){
 		done: function(data){
 			_this._getTime(data);
 			_this._oldTime = _this._getTime(data);
-			_this._startInt(_this.NORMAL_INTERVAL);
+			_this._sync(_this.NORMAL_INTERVAL);
 			_this.data = _this.parse(data);
 		}
 	});
 
+	this._sync();
 }
 
 
@@ -118,6 +119,22 @@ UFV.prototype.parse = function(data){
 		var wait = ~~arr[3];
 		Obj[crn] = [max,enrolled,wait];
 	});
-	
+
 	return Obj;
+}
+
+
+/*
+* UFV._sync - starts the setInterval and tries to sync it
+*/
+
+UFV.prototype._sync = function(){
+	var _this = this;
+	setInterval(function(){
+		var newTime = _this.get();
+		if((newTime  - _this._oldTime) > 0){
+
+		}
+
+	},this.NORMAL_INTERVAL);
 }
