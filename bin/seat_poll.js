@@ -3,7 +3,8 @@ var ajax = require('./Ajax.js');
 'http://ufv.ca/arfiles/Banner_Size_Sect_CR.txt'
 
 // Returns the lines of data.
-b.split('\n').filter(function(line){
+
+/*b.split('\n').filter(function(line){
 	return line.substr(0,6).match(/\d{5}/)
 }).map(function(line){
 	return line.substr(1).split('|').map((arr) => (arr.trim()))
@@ -30,7 +31,7 @@ if(oldTime !== null){
 	}
 }
 
-
+*/
 /*
 	The protocol
 	- Do a request, get old time
@@ -56,8 +57,18 @@ if(oldTime !== null){
 
 
 function UFV(){
+	//This is 10 minutes
+	this.NORMAL_INTERVAL = 120000;
 	this.baseURL = 'http://ufv.ca/arfiles/Banner_Size_Sect_CR.txt';
+	this._oldTime = 0;
+	this.data = null;
 }
+
+
+/*
+* UFV.start - starts the polling, begins by trying to find the update time
+*
+*/
 
 UFV.prototype.start = function(){
 	var _this = this;
@@ -65,19 +76,48 @@ UFV.prototype.start = function(){
 	ajax.get({
 		url: this.baseURL,
 		done: function(data){
-			_this.getTime(data);
-			_this.oldTime = _this.getTime(data);
+			_this._getTime(data);
+			_this._oldTime = _this._getTime(data);
+			_this._startInt(_this.NORMAL_INTERVAL);
+			_this.data = _this.parse(data);
 		}
-	})
+	});
+
 }
 
 
 /*
 * UFV._getTime - accepts the data, returns the current time
-*	@param {String} data - the data of the page
-*	@returns {Integer} - the time in minutes
+*   @param {String} data - the data of the page
+*   @returns {Integer} - the time in minutes
 */
+
 UFV.prototype._getTime = function(data){
 	var n = b.split('\n')[0].split(' ').filter((i) => (i))[3].split(':');
 	return ((n[0] * 60) + (~~n[1]));
+}
+
+
+/*
+* UFV.parse - accepts the data, returns the parsed stuff as an object
+*   @param {String} data - the data of the page
+*   @returns {Object} - the object containing all the seat data
+*/
+
+UFV.prototype.parse = function(data){
+	var Obj = {};
+
+	data.split('\n').filter(function(line){
+		return line.substr(0,6).match(/\d{5}/)
+	}).map(function(line){
+		return line.substr(1).split('|').map((arr) => (arr.trim()))
+	}).map(function(arr){
+		var crn = ~~arr[0].substr(0,5);
+		var max = ~~arr[1].split(' ').filter((i) => (i))[0];
+		var enrolled = ~~arr[1].split(' ').filter((i) => (i))[1];
+		var wait = ~~arr[3];
+		Obj[crn] = [max,enrolled,wait];
+	});
+	
+	return Obj;
 }
