@@ -31,9 +31,13 @@ block bodyContent
 	div#templates
 		//The template for the course info on the side of schedules
 		div.schedule__infoLine
-			span.schedule__infoBlock ENGL105 AB2
-			span.schedule__infoBlock.schedule__infoBlock--right Alex Wetmore
-			span.schedule__infoBlock.schedule__infoBlock--right 3.2
+			div(style="width: 100%;")
+				span.schedule__infoCourse.schedule__infoBlock ENGL105 AB2
+				span.schedule__infoBlock.schedule__infoBlock--right 1 Open
+			br
+			div(style="width: 100%;")
+				span.schedule__infoName.schedule__infoBlock.schedule__infoBlock--left Alex Wetmore
+				span.schedule__infoRating.schedule__infoBlock.schedule__infoBlock--right 3.2
 			
 		//Template for the entire schedule thing
 		div.schedule__wrapper

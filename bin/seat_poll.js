@@ -54,3 +54,30 @@ if(oldTime !== null){
 
 
 
+
+function UFV(){
+	this.baseURL = 'http://ufv.ca/arfiles/Banner_Size_Sect_CR.txt';
+}
+
+UFV.prototype.start = function(){
+	var _this = this;
+
+	ajax.get({
+		url: this.baseURL,
+		done: function(data){
+			_this.getTime(data);
+			_this.oldTime = _this.getTime(data);
+		}
+	})
+}
+
+
+/*
+* UFV._getTime - accepts the data, returns the current time
+*	@param {String} data - the data of the page
+*	@returns {Integer} - the time in minutes
+*/
+UFV.prototype._getTime = function(data){
+	var n = b.split('\n')[0].split(' ').filter((i) => (i))[3].split(':');
+	return ((n[0] * 60) + (~~n[1]));
+}

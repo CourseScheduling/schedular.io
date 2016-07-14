@@ -208,9 +208,9 @@ View.prototype.addProfs = function(wrapper,schedule){
 		for(var p = 0,pp = _schedule.profs&&_schedule.profs.length;p < pp;p++){
 			var _line = this.gen('schedule__infoLine');
 			var _b = document.createElement('br');
-			_line.children[0].innerHTML = _schedule.title+' '+_schedule.section;
-			_line.children[1].innerHTML = _schedule.profs[p].name||'{Unknown}';
-			_line.children[2].innerHTML = _schedule.profs[p].rating||'';
+			_line.getElementsByClassName('schedule__infoCourse')[0].innerHTML = _schedule.title+' '+_schedule.section;
+			_line.getElementsByClassName('schedule__infoName')[0].innerHTML = _schedule.profs[p].name||'{Unknown}';
+			_line.getElementsByClassName('schedule__infoRating')[0].innerHTML = _schedule.profs[p].rating||'';
 
 			_line.children[0].style.color = UTIL.helper.color.bgColor(_schedule.title)
 			_profs.appendChild(_line);

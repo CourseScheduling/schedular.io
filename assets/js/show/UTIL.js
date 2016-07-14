@@ -19,7 +19,7 @@ UTIL	=	{
 *		@method	bgColor	->	Outputs a hex for a bright, cool, background color based on a string seed
 *			@param {String}	seed	
 */
-var AVG_CONSTANT = 200;	
+var AVG_CONSTANT = 225;	
 
 UTIL.helper.color   =   (function(UTIL){
 		return {
