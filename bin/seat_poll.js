@@ -8,13 +8,17 @@ b.split('\n').filter(function(line){
 }).map(function(line){
 	return line.substr(1).split('|').map((arr) => (arr.trim()))
 }).map(function(arr){
-	var crn = arr[0].substr(0,5);
-	var max = arr[1].substr();
+	var crn = ~~arr[0].substr(0,5);
+	var max = ~~arr[1].split(' ').filter((i) => (i))[0];
+	var enrolled = ~~arr[1].split(' ').filter((i) => (i))[1];
+	var wait = ~~arr[3];
+
+	return [crn,max,enrolled,wait];
 });
 
 
 
-var n = b.split('\n')[0].split(' ').filter((i) => (i))[2].split(':');
+var n = b.split('\n')[0].split(' ').filter((i) => (i))[3].split(':');
 var time = ((n[0] * 60) + (~~n[1]));
 
 
