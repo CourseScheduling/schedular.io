@@ -59,7 +59,7 @@ if(oldTime !== null){
 function UFV(){
 	// This is 10 minutes
 	this.NORMAL_INTERVAL = 120000;
-	this.baseURL = 'http://ufv.ca/arfiles/Banner_Size_Sect_CR.txt';
+	this.BASE_URL = 'http://ufv.ca/arfiles/Banner_Size_Sect_CR.txt';
 	this._oldTime = 0;
 	this._interval = 0;
 	this.data = null;
@@ -74,7 +74,7 @@ UFV.prototype.start = function(){
 	var _this = this;
 
 	ajax.get({
-		url: this.baseURL,
+		url: this.BASE_URL,
 		done: function(data){
 			_this._getTime(data);
 			_this._oldTime = _this._getTime(data);
@@ -82,8 +82,6 @@ UFV.prototype.start = function(){
 			_this.data = _this.parse(data);
 		}
 	});
-
-	this._sync();
 }
 
 
@@ -138,3 +136,9 @@ UFV.prototype._sync = function(){
 
 	},this.NORMAL_INTERVAL);
 }
+
+
+
+global.universities = {
+	UFV: new UFV()
+};
