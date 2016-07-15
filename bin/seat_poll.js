@@ -92,7 +92,7 @@ UFV.prototype.start = function(){
 */
 
 UFV.prototype._getTime = function(data){
-	var n = b.split('\n')[0].split(' ').filter((i) => (i))[3].split(':');
+	var n = data.split('\n')[0].split(' ').filter((i) => (i))[3].split(':');
 	return ((n[0] * 60) + (~~n[1]));
 }
 
@@ -139,6 +139,6 @@ UFV.prototype._sync = function(){
 
 
 
-global.universities = {
+module.exports = global.universities = {
 	UFV: new UFV()
 };
