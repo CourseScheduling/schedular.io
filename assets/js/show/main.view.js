@@ -176,8 +176,8 @@ View.prototype.render = function(num){
 
 
 View.prototype.makeSchedule = function(schedule){
-	var _wrapper = this.gen('schedule__wrapper');
-	var _course = _wrapper.getElementsByClassName('schedule__blockContainer')[0];
+	var _wrapper = this.gen('schedule__wrapper--m');
+	var _course = _wrapper.getElementsByClassName('schedule__blockContainer--m')[0];
 	
 	for(var i = 0;i < schedule.length;i++){
 		_course.appendChild(this.makeBlocks(schedule[i]));

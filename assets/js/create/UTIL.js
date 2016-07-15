@@ -24,14 +24,7 @@ var AVG_CONSTANT = 200;
 UTIL.helper.color   =   (function(UTIL){
 		return {
 			bgColor:function(seed){
-				var num = Math.abs(~~(Math.sin(parseInt(seed,36))*1e11)).toString(10);
-				
-				var r = ~~((((~~num.substr(0,3)) % 256) + AVG_CONSTANT) / 2);
-				var g = ~~((((~~num.substr(3,3)) % 256) + AVG_CONSTANT) / 2);
-				var b = ~~((((~~num.substr(6,3)) % 256) + AVG_CONSTANT) / 2);
-				console.log(r,g,b)
-				return '#' + r.toString(16) + g.toString(16) + b.toString(16);
-				//return randomColor({luminosity:"light",format:"hex",seed:parseInt(seed,30)});           
+				return randomColor({luminosity:"bright",format:"hex",seed:parseInt(seed,36)});           
 			}
 		};
 })(UTIL);

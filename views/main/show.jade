@@ -58,22 +58,23 @@ block bodyContent
 				div.schedule__blockContainer
 
 		//Template for the mobile schedule
-		div.schedule__wrapper--m
-			div.schedule__info
+		div.schedule__wrapper.schedule__wrapper--m
+			div.schedule__info.schedule__info--m
 				br
 				div.schedule__ratingWrap
 					span.schedule__ratingLabel Avg Rating
 					span.schedule__avgRating 5.29
 				br
-			div.schedule__container--m
+			br
+			div.schedule__container.schedule__container--m
 				div.schedule__dayWrap
 					each time, index in ['Su','Mo','Tu','We','Th','Fr','Sa']
 						div.schedule__dayLabel=time
 				div.schedule__timeWrap
-					each time, index in ['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm','10:00 pm']
+					each time, index in ['8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00']
 						div.schedule__timeLabel(style="top:"+((index*30)-1)+'px')
 							div.schedule__s__name=time
-				div.schedule__blockContainer--m
+				div.schedule__blockContainer.schedule__blockContainer--m
 
 		//Template in case there isn't anything to render		
 		div.none__big(style="margin-top: 50px;")
