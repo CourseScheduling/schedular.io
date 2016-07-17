@@ -4,6 +4,15 @@ extends __template
 block headContent
 	link(rel="stylesheet" href="/css/main--show.css")
 	title Schedules
+	style.
+		#loading__message{
+			font-size: 16px;
+			font-weight: 600;
+			font-family: Raleway;
+			color: #999;
+			width: 100%;
+			text-align: center;s
+		}
 
 
 block bodyContent
@@ -20,7 +29,7 @@ block bodyContent
 			div#break__button Add Breaks
 		div(style="width:65%;text-align:center;margin:auto;display:inline-block;margin-top: 10px;")
 	div#schedule__scrollWrap
-	
+	div#loading__message
 	
 	
 	

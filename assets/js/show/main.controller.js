@@ -5,11 +5,13 @@ function Controller(){
 Controller.prototype.start = function(){
 	if(!Courses.length)
 		return Schedular.View.none();
+	var $this = this;
 	this.prep();
-	this.schedule();
-	if(!this.Schedules.length)
-		return Schedular.View.none();
-	Schedular.View.render(-1);
+	this.schedule(function(){
+		if(!$this.Schedules.length)
+			return Schedular.View.none();
+		Schedular.View.render(-1);
+	});
 }
 
 Controller.prototype.prep = function(){
@@ -30,11 +32,14 @@ Controller.prototype.prep = function(){
 	}	
 }
 
-Controller.prototype.schedule = function(){
+Controller.prototype.schedule = function(cb){
+	Schedular.View.loading(1);
+	var $this = this;
+	setTimeout(function(){
 	var TIME = Date.now();
-	//We don't wanna do this multiple times...
-	if(this.Schedules.length)
-		return this.Schedules;
+	//We don't wanna do $this multiple times...
+	if($this.Schedules.length)
+		return $this.Schedules;
 	
 	
 	//If you find collisions early you can save a lot of time.
@@ -76,7 +81,7 @@ Controller.prototype.schedule = function(){
 					}
 				}	
 				
-				//Since this ain't a bad combo, we can push it into possibilities array
+				//Since $this ain't a bad combo, we can push it into possibilities array
 				possible.push(_schedule.concat(_course));
 			}
 		}
@@ -170,9 +175,10 @@ Controller.prototype.schedule = function(){
 	
 	console.info('Finished scheduling in ' + (Date.now()-TIME) + 'ms');
 	console.info(possible.length+' possible schedules!');
-	this.Schedules = possible;
-	
-	return this.Schedules;
+	$this.Schedules = possible;
+	cb&&cb();
+	return $this.Schedules;
+	},50);
 }
 
 

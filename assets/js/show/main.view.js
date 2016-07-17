@@ -133,7 +133,20 @@ View.prototype.setBreaks = function(){
 
 
 
+View.prototype.loading = function(show){
+	var num = 1;
+	for(var i = Courses.length;i--;){
+		num *= Courses[i].mangled.length;
+	}
 
+	var _msg = document.getElementById('loading__message');
+	if(show){
+		_msg.innerHTML = 'Gimme a sec, filtering through '+num.toLocaleString()+' schedules';
+	}
+	else{
+		_msg.innerHTML = '';
+	}
+}
 
 View.prototype.render = function(num){
 

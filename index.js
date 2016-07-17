@@ -11,10 +11,10 @@ var api = require('./routes/api');
 var home = require('./routes/home');
 var login = require('./routes/auth/login');
 var signup = require('./routes/auth/signup');
-var main = require('./routes/main/main');
-require('./bin/seats')
-var seats = global.seats = ChildProcess.fork('./bin/seat_poll');
-
+	var main = require('./routes/main/main');/*
+	require('./bin/seats')
+	var seats = global.seats = ChildProcess.fork('./bin/seat_poll');
+*/
 var app = Koa();
 
 var jade = new Jade({
