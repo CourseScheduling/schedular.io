@@ -9,9 +9,39 @@ block headContent
 			font-size: 16px;
 			font-weight: 600;
 			font-family: Raleway;
-			color: #999;
+			color: #444;
 			width: 100%;
-			text-align: center;s
+			text-align: center;
+		}
+		#loading__container{
+			margin: auto;
+			text-align: center;
+			width: 100%;
+			margin-top: 30px;
+		}
+		.loading__dot {
+		  width: 10px;
+		  height: 10px;
+		  border: 2px solid #444;
+		  border-radius: 50%;
+		  margin: auto;
+		  transform: scale(0);
+		  animation: fx 1000ms ease infinite 0ms;
+		}
+		.loading__dot:nth-child(2) {
+		  animation: fx 1000ms ease infinite 300ms;
+		}
+		.loading__dot:nth-child(3) {
+		  animation: fx 1000ms ease infinite 600ms;
+		}
+		@keyframes fx {
+		  50% {
+		    transform: scale(1);
+		    opacity: 1;
+		  }
+		  100% {
+		    opacity: 0;
+		  }
 		}
 
 
@@ -30,6 +60,11 @@ block bodyContent
 		div(style="width:65%;text-align:center;margin:auto;display:inline-block;margin-top: 10px;")
 	div#schedule__scrollWrap
 	div#loading__message
+	br
+	div#loading__container
+		div.loading__dot
+		div.loading__dot
+		div.loading__dot
 	
 	
 	
@@ -92,7 +127,7 @@ block bodyContent
 			div(style="font-size: 12px;font-weight: 400;color: #999;font-family: Open Sans;") Try using a different combination of courses or less filters
 			br
 			img(src="/img/schedular-snapcode.png" height="100px" style="margin-top: 30px;")
-			div(style="font-size: 12px;font-weight: 400;color: #999;font-family: Open Sans;margin-top: 20px;")  If all else fails, you can always snapchat us at: schedularteam
+			div(style="font-size: 12px;font-weight: 400;color: #999;font-family: Open Sans;margin-top: 20px;")  If all else fails, you can always snapchat support at: schedularteam
 
 		//Template for the break container, this thing is actually displayed so yea..
 		div.break__container

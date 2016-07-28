@@ -141,6 +141,30 @@ router.get('/profs',function *(){
 });
 
 
+/*
+*	@route Seats
+*		@param crn {String} csv of crns
+*/
+router.get('/seats', function *(){
+	var _this = this;
+
+	var _uni = this.params.uni.split('/')[0];
+	var _seats = this.query.crn.split(',');
+
+	//The array of data for returning
+	var _dArr = [],_data = {};
+	for(var i = 0,ii = _seats.length;i < ii;i++){
+		//Push in the data for said seat.
+		_dArr.push(global.seats[_uni][_seats[i]]);
+	}
+	//Include the interval with the data
+	_data.data = _dArr;
+	_data.interval = global.seats[_uni].nextTime;
+
+	this.body = _data;
+});
+
+
 module.exports = router;
 
 

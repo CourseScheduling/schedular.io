@@ -141,7 +141,7 @@ View.prototype.loading = function(show){
 
 	var _msg = document.getElementById('loading__message');
 	if(show){
-		_msg.innerHTML = 'Gimme a sec, filtering through '+num.toLocaleString()+' schedules';
+		_msg.innerHTML = "Gimme a sec, I'm going through "+num.toLocaleString()+" possible schedules...";
 	}
 	else{
 		_msg.innerHTML = '';
@@ -350,6 +350,10 @@ View.prototype.enableSliders = function(){
 View.prototype.none = function(){
 	//Show that there are no schedules to show.
 	var _container = document.getElementById('schedule__scrollWrap');
+	//Get rid of the loading
+	var _loading = document.getElementById('loading__container');
+	_loading.parentNode.removeChild(_loading);
+
 	var _msg = this.gen('none__big');
 	this._disabled = true;
 	_container.appendChild(_msg);
