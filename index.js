@@ -13,7 +13,7 @@ var login = require('./routes/auth/login');
 var signup = require('./routes/auth/signup');
 var main = require('./routes/main/main');
 
-require('./bin/seats')
+//require('./bin/seats')
 
 var app = Koa();
 
