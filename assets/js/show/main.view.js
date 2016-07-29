@@ -131,7 +131,8 @@ View.prototype.setBreaks = function(){
 		if(rangeStart)
 			breaks.push([day,rangeStart,days[day][i - 1]]);
 	}
-	console.log(/*$this._breaks,days,*/breaks);
+	this._breaks = breaks;
+	this.render(-1);
 }
 
 
@@ -199,6 +200,7 @@ View.prototype.makeSchedule = function(schedule){
 	for(var i = 0;i < schedule.length;i++){
 		_course.appendChild(this.makeBlocks(schedule[i]));
 	}
+
 	this.addProfs(_wrapper,schedule);
 	
 	return _wrapper;
@@ -264,6 +266,28 @@ View.prototype.makeBlocks = function(section){
 		name.innerHTML = section.title;
 		name.style.backgroundColor = UTIL.helper.color.bgColor(section.title);
 
+		_block.appendChild(name);
+		_frag.appendChild(_block);
+	}
+
+	// The break chunks
+	for(var chunk in $this._breaks){
+		var thing = $this._breaks[chunk];
+		thing[1] = ((thing[1] - 1) * 60) + 480;
+		thing[2] = ((thing[2] - 1) * 60) + 480;
+		console.log(thing[2] - thing[1]);
+
+		var _block = UTIL.helper.element.create('div',{class:'schedule__s'});
+
+		UTIL.helper.element.editStyle(_block,{
+			top: [((thing[1] - 480)/900)*100,'%'].join(''),
+			left: [((thing[0] % 6)+1)*(100/7),'%'].join(''),
+			height: [((thing[2] - thing[1])/840)*100,'%'].join('')
+		});
+		
+		var name = UTIL.helper.element.create('div',{class:'schedule__s__name'});
+		name.innerHTML = 'BREAK';
+		name.style.backgroundColor = '#333';
 		_block.appendChild(name);
 		_frag.appendChild(_block);
 	}

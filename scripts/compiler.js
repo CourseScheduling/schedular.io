@@ -1,6 +1,7 @@
 var ClosureCompiler = require("closurecompiler");
 var platform = process.platform;
 var exec = require('child_process').exec;
+var fs = require('fs');
 
 var files = [];
 
@@ -20,7 +21,6 @@ else if(platform == 'linux'){
 function compile(arr){
 	arr = arr.filter((i) => (i&&(i.indexOf('ERROR') == -1)));
 	arr = arr.map((file) => ('.'+file));
-	console.log(arr)
 	arr.forEach(function(files){
 
 		var assets = require(files).map(function(file){
@@ -28,20 +28,16 @@ function compile(arr){
 		});
 		console.log(assets)
 
-		ClosureCompiler.compile(
-			assets,
-    {
-        // Options in the API exclude the "--" prefix 
-        compilation_level: "ADVANCED_OPTIMIZATIONS",
-    },
-    function(error, result) {
-        if (result) {
-        	console.log(result);
-        } else {
-            // Display error... 
-         }
-    }
-);
+		ClosureCompiler.compile(assets,{compilation_level: "ADVANCED_OPTIMIZATIONS"},
+		(error, result) => {
+	        if (result) {
+	        	fs.writeFile(files,result,function(err){
+
+	        	});
+	        } else {
+
+	        }
+	    });
 	});
 	console.log(arr);
 }	
