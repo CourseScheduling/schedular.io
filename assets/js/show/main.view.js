@@ -79,12 +79,12 @@ View.prototype.enableBreak = function(){
 			temp: true,
 			body: document.getElementsByClassName('break__container')[0],
 			end: function(){
-				var selected = document.querySelectorAll('[data-broken="1"]');
+				var selected = document.querySelectorAll('[data-broken="true"]');
 				$this._breaks = [];
 				[].forEach.call(selected, function(block){
 					$this._breaks.push([parseInt(block.getAttribute('data-col')),parseInt(block.getAttribute('data-row'))]);
-					$this.setBreaks();
 				});
+				$this.setBreaks();
 			}
 		});
 
@@ -121,13 +121,17 @@ View.prototype.setBreaks = function(){
 	});
 
 	for(var day = 0;day < 7;day++){
+		var rangeStart = days[day][0];
 		for(var i = 1,ii = days[day].length;i < ii;i++){
-			days[day][ii]
+			if((days[day][i] - days[day][i-1]) != 1){
+				breaks.push([day,rangeStart,days[day][i - 1]]);
+				rangeStart = days[day][i];
+			}
 		}
+		if(rangeStart)
+			breaks.push([day,rangeStart,days[day][i - 1]]);
 	}
-
-
-
+	console.log(/*$this._breaks,days,*/breaks);
 }
 
 
@@ -288,7 +292,6 @@ View.prototype.enableInfinite	=	function(){
 		
 		//We don't want to touch the bottom
     if ((window.innerHeight + window.scrollY) >= height * 0.75) {
-			console.log(window.innerHeight,window.scrollY, height);
 			_this.render();
 		}
 	};
@@ -356,6 +359,7 @@ View.prototype.none = function(){
 
 	var _msg = this.gen('none__big');
 	this._disabled = true;
+	this.loading(false);
 	_container.appendChild(_msg);
 }
 

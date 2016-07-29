@@ -34,7 +34,7 @@ app.use(main.routes());
 
 app.use(Static('./assets',{
 	hidden: false,
-	maxage: 360000
+	maxage: 3
 }));
 
 app.listen(5000);
