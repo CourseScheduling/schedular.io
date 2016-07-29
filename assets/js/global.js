@@ -212,3 +212,59 @@ n=null}var b,c,e;if(null!==a.count&&void 0!==a.count){b=a.count;c=[];for(a.count
 console.log("%c Yo","font-size:50px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
 console.log("%c wanna help out with schedular?","font-size:12px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
 console.log("%c email me at joseph.thomas@student.ufv.ca","font-size:12px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function require(src){
+	var s;
+	
+	if(!document){
+		return;
+	}
+
+	if(typeof src == "string"){
+		
+		s = document.createElement('script');
+		s.src = src;
+		document.body.appendChild(s);
+
+	}else if(typeof src == "object"){
+		
+		for(var i = 0, ii = src.length;i < ii;i++){
+			s = document.createElement('script');
+			s.src = src[i];
+			document.body.appendChild(s);
+		}
+
+	}
+
+	return src;
+}

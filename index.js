@@ -32,7 +32,10 @@ app.use(login.routes());
 app.use(signup.routes());
 app.use(main.routes());
 
-app.use(Static('./assets'));
+app.use(Static('./assets',{
+	hidden: false,
+	maxage: 360000
+}));
 
 app.listen(5000);
 console.log('Schedular is Listening on port 5000');
