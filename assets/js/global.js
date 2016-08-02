@@ -245,25 +245,25 @@ console.log("%c email me at joseph.thomas@student.ufv.ca","font-size:12px;color:
 
 function require(src){
 	var s;
-	
+	var _append = function(src){
+		s = document.createElement('script');
+		s.src = src;
+		document.body.appendChild(s);
+	}
 	if(!document){
 		return;
 	}
 
 	if(typeof src == "string"){
-		
-		s = document.createElement('script');
-		s.src = src;
-		document.body.appendChild(s);
-
+		_append(src);
 	}else if(typeof src == "object"){
-		
+		var last = src.pop();
 		for(var i = 0, ii = src.length;i < ii;i++){
-			s = document.createElement('script');
-			s.src = src[i];
-			document.body.appendChild(s);
+			_append(src[i]);
 		}
-
+		setTimeout(function(){
+			_append(last)
+		},200);
 	}
 
 	return src;

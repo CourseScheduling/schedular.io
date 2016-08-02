@@ -11,6 +11,7 @@ Controller.prototype.start = function(){
 		if(!$this.Schedules.length)
 			return Schedular.View.none();
 		Schedular.View.render(-1);
+		Schedular.View.loading(false);
 	});
 }
 

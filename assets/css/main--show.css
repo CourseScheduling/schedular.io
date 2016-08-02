@@ -25,13 +25,14 @@
 	width: 80%;
 	margin: auto;
 	display: inline-block;
+	text-align: center;
 }
 
 	.schedule__container{
 		float: right;
 		margin-top: 10px;
-		min-width: 320px;
-		min-height: 320px;
+		min-width: 300px;
+		min-height: 300px;
 		width: 50vw;
 		height: 50vw;
 		max-width: 550px;

@@ -145,11 +145,13 @@ View.prototype.loading = function(show){
 	}
 
 	var _msg = document.getElementById('loading__message');
+	var _thing = document.getElementById('loading__container');
 	if(show){
 		_msg.innerHTML = "Gimme a sec, I'm going through "+num.toLocaleString()+" possible schedules...";
 	}
 	else{
 		_msg.innerHTML = '';
+		_thing.style.display = 'none';
 	}
 }
 
@@ -194,8 +196,8 @@ View.prototype.render = function(num){
 
 
 View.prototype.makeSchedule = function(schedule){
-	var _wrapper = this.gen('schedule__wrapper--m');
-	var _course = _wrapper.getElementsByClassName('schedule__blockContainer--m')[0];
+	var _wrapper = this.gen('schedule__wrapper');
+	var _course = _wrapper.getElementsByClassName('schedule__blockContainer')[0];
 	
 	for(var i = 0;i < schedule.length;i++){
 		_course.appendChild(this.makeBlocks(schedule[i]));
@@ -274,14 +276,14 @@ View.prototype.makeBlocks = function(section){
 	for(var chunk in $this._breaks){
 		var thing = $this._breaks[chunk];
 		thing[1] = ((thing[1] - 1) * 60) + 480;
-		thing[2] = ((thing[2] - 1) * 60) + 480;
+		thing[2] = ((thing[2]) * 60) + 480;
 		console.log(thing[2] - thing[1]);
 
 		var _block = UTIL.helper.element.create('div',{class:'schedule__s'});
 
 		UTIL.helper.element.editStyle(_block,{
 			top: [((thing[1] - 480)/900)*100,'%'].join(''),
-			left: [((thing[0] % 6)+1)*(100/7),'%'].join(''),
+			left: [((thing[0])+1)*(100/7),'%'].join(''),
 			height: [((thing[2] - thing[1])/840)*100,'%'].join('')
 		});
 		

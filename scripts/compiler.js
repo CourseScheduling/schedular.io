@@ -22,20 +22,22 @@ function compile(arr){
 	arr = arr.filter((i) => (i&&(i.indexOf('ERROR') == -1)));
 	arr = arr.map((file) => ('.'+file));
 	arr.forEach(function(files){
-
+		if(!(require(files) instanceof Array)){
+			return;
+		}
 		var assets = require(files).map(function(file){
 			return './assets/' + file;
 		});
 		console.log(assets)
 
-		ClosureCompiler.compile(assets,{compilation_level: "ADVANCED_OPTIMIZATIONS"},
+		ClosureCompiler.compile(assets,{compilation_level: "SIMPLE_OPTIMIZATIONS"},
 		(error, result) => {
 	        if (result) {
-	        	fs.writeFile(files,result,function(err){
-
+	        	fs.writeFile(files.substr(1),result,function(err){
+	        		console.log(err)
 	        	});
 	        } else {
-
+	        	console.log('bad '+files);
 	        }
 	    });
 	});
