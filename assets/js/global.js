@@ -138,6 +138,11 @@ function Modal(options){
 			var _prevParent = options.body.parentNode;
 			var _body = container.appendChild(options.body)
 		break;
+		case 'text':
+			var _prevParent = options.body.parentNode;
+			container.innerHTML += options.body;
+
+		break;
 		default:
 
 		break;
@@ -152,7 +157,7 @@ function Modal(options){
 			begin: function(){
 				document.body&&document.body.appendChild(_frag);		
 			},
-			duration: 200
+			duration: 100
 		},100);
 			
 		//If it's outclickable
@@ -173,7 +178,7 @@ function Modal(options){
 								document.body.removeChild(overlay);
 								options.end&&options.end();
 							},
-							duration: 200
+							duration: 100
 						});
 
 					},100);

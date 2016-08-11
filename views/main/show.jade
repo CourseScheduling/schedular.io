@@ -58,6 +58,45 @@ block headContent
 			display: inline-block;
 			margin-top: 10px;
 		}
+
+		.schedule__btn{
+			display: inline-block;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #DDD;
+			color:#DDD;
+			font-size: 11px;
+			margin: 5px;
+			transition: .25s background-color;
+			cursor: pointer;
+		}
+			.schedule__btn--uniq{
+				color: #3498db;
+				border-color: #3498db;
+			}
+				.schedule__btn--uniq:hover{
+					background-color: #3498db;
+					color: #FFF;
+					transition: .25s background-color;
+				}
+			.schedule__btn--save{
+				color: #e74c3c;
+				border-color: #e74c3c;
+			}
+				.schedule__btn--save:hover{
+					background-color: #e74c3c;
+					color: #FFF;
+					transition: .25s background-color;
+				}
+			.schedule__btn--edit{
+				color: #8e44ad;
+				border-color: #8e44ad;
+			}
+				.schedule__btn--edit:hover{
+					background-color: #8e44ad;
+					color: #FFF;
+					transition: .25s background-color;
+				}
 block bodyContent
 	div#Tips-toolTip Monday | 10:00am — 1:00pm
 	div.control__wrapper(style="margin:auto;text-align:center;max-width:1200px;width:100%;margin-top: 30px;")
@@ -104,6 +143,13 @@ block bodyContent
 					span.schedule__ratingLabel Avg Rating
 					span.schedule__avgRating 5.29
 				br
+				div.schedule__infoWrap
+				br
+				div.schedule__btnWrap(style="margin-top: 25px;float:left;width: 100%;")
+					div.schedule__btn.schedule__btn--uniq(onclick="Schedular.View.button(this, 'uniq')") CRNs
+					div.schedule__btn.schedule__btn--save(onclick="Schedular.View.button(this, 'save')") Save
+					div.schedule__btn.schedule__btn--edit(onclick="Schedular.View.button(this, 'edit')") Edit
+
 			div.schedule__container
 				div.schedule__dayWrap
 					each time, index in ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']

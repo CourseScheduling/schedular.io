@@ -14,6 +14,7 @@ function View(){
 	this.enableResponsive();
 	this.enableSliders();
 	this.enableBreak();
+	this.enableButtons();
 }
 
 
@@ -185,7 +186,7 @@ View.prototype.render = function(num){
 	//Show all the schedules and reset num
 	var _final = num + this._sCounter;
 	for(var i = this._sCounter;i < _final;i++){
-		_container.appendChild(this.makeSchedule(_schedules[i]));
+		_container.appendChild(this.makeSchedule(_schedules[i],i));
 	}	
 	
 	this._sCounter += num;
@@ -195,10 +196,10 @@ View.prototype.render = function(num){
 }
 
 
-View.prototype.makeSchedule = function(schedule){
+View.prototype.makeSchedule = function(schedule,index){
 	var _wrapper = this.gen('schedule__wrapper');
 	var _course = _wrapper.getElementsByClassName('schedule__blockContainer')[0];
-	
+	_wrapper.setAttribute('data-schedule__index',index);
 	for(var i = 0;i < schedule.length;i++){
 		_course.appendChild(this.makeBlocks(schedule[i]));
 	}
@@ -222,7 +223,7 @@ View.prototype.gen = function(template){
 }
 
 View.prototype.addProfs = function(wrapper,schedule){
-	var _profs = wrapper.getElementsByClassName('schedule__info')[0];
+	var _profs = wrapper.getElementsByClassName('schedule__infoWrap')[0];
 	var _sum = 0,_count=0;
 	for(var i = 0,ii = schedule.length;i < ii;i++){
 		var _schedule = schedule[i];
