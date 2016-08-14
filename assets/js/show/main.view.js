@@ -284,7 +284,7 @@ View.prototype.makeBlocks = function(section){
 
 		UTIL.helper.element.editStyle(_block,{
 			top: [((thing[1] - 480)/900)*100,'%'].join(''),
-			left: [((thing[0])+1)*(100/7),'%'].join(''),
+			left: [((thing[0]))*(100/7),'%'].join(''),
 			height: [((thing[2] - thing[1])/840)*100,'%'].join('')
 		});
 		

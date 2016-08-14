@@ -116,8 +116,8 @@
 		}
 			#question__container{
 				height: 400px;
-				width: 400px;
-				margin: -200px 0 0 -200px;
+				width: 300px;
+				margin: -200px 0 0 -150px;
 				background-color: #FFF;
 				position: absolute;
 				top: 50%;
