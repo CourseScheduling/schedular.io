@@ -1,8 +1,7 @@
 var router = require('koa-router')()
 var async = require('async')
 var Mongo = require('monk')
-var Token = require('../../bin/token')
-var Validator = require('./validator')
+var Token = require('../../bin/Token')
 
 var EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 var USERNAME_REGEX = /[^(A-Z)(a-z)(0-9)_-]/g
