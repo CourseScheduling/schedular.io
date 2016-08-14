@@ -26,6 +26,9 @@ Token.generate = (username) => {
  */
 Token.validate = (hash) => {
   var hashParts = hash.split('..')
+  if (+hashParts[1] < ~~(Date.now() / 1000)) {
+    return false
+  }
 
   var hmac = crypto.createHmac('sha1', global.API_SECRET)
   .update(hashParts[1])

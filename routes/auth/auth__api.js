@@ -13,49 +13,6 @@ var USERNAME_REGEX = /[^(A-Z)(a-z)(0-9)_-]/g
  * @param {Function} good
  * @param {Function} bad
  */
-function Validator (type, username, email, good, bad) {
-  switch(type){
-    case 'signup':
-    async.series([
-      (callback) => {
-        Validator.syntax({
-          email: email, 
-          username: username
-        }, callback)
-      }, (callback) => {
-        Validator.exists(email, username, callback)
-      }
-    ], (error) => {
-      if (error) {
-        bad(error)
-      } else {
-        good()
-      }
-    })
-    break;
-    case 'login':
-    async.waterfall([
-      (callback) => {
-        Validator.syntax({
-          email: email,
-          username: username
-        }, callback)
-      }, (callback) => {
-        Validator.exists(email, username, callback)
-      }, (callback, user) => {
-        Validator
-      }
-    ], (error) => {
-      if (error) {
-        bad(error)
-      } else {
-        good()
-      }
-    })
-
-    break;
-  }
-}
 
 /**
  * The function used to check if the email and username is good
