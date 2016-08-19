@@ -1,0 +1,25 @@
+{
+	"_id": "",
+	"username": "",
+	"password": "",
+	"name": "",
+	"shaPass": "",
+	"email": "",
+	"university": "",
+	"language": "",
+	"prints": {
+		"HASH__PROP": {
+			"language": "",
+			"ip": "",
+			"canvas": "",
+			"userAgent": ""
+		}
+	},
+	"sent": [
+		{
+			"type": "email",
+			"opened": "",
+			"id": ""
+		}
+	]
+}
