@@ -231,7 +231,8 @@ if(!UTIL.helper.localStorage.get('UNIVERSITY')){
 		header: "<strong>Hey!</strong> What university do you go to?",
 		options: {
 			sfu: 'SFU - Simon Fraser University',
-			ufv: 'UFV - University of the Fraser Valley'
+			ufv: 'UFV - University of the Fraser Valley',
+			ubc: 'UBC - University of British Columbia'
 		},
 		onChoice: function(uni){
 			UTIL.helper.localStorage.set('UNIVERSITY',uni,Date.now());

@@ -8,9 +8,9 @@ var Jade = require('koa-jade');
 var ChildProcess = require('child_process');
 
 var api = require('./routes/api');
-var home = require('./routes/home');
+var home = require('./routes/home');/*
 var login = require('./routes/auth/login');
-var signup = require('./routes/auth/signup');
+var signup = require('./routes/auth/signup');*/
 var main = require('./routes/main/main');
 
 //require('./bin/seats')
@@ -27,9 +27,9 @@ app.use(Gzip());
 app.use(Logger());
 
 app.use(home.routes());
-app.use(api.routes());
+app.use(api.routes());/*
 app.use(login.routes());
-app.use(signup.routes());
+app.use(signup.routes());*/
 app.use(main.routes());
 
 app.use(Static('./assets',{

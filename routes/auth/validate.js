@@ -11,21 +11,31 @@ var USERNAME_REGEX = /[^(A-Z)(a-z)(0-9)_-]/g
  * @param {Function} bad
  */
 function Validator (type, inputs) {
-  return new Promise((resolve, reject) => {
-    async.waterfall([
-      (callback) => {
-        Validator.syntax(type, inputs, callback)
-      }, (callback) => {
-        Validator.exists(inputs, callback)
-      }
-    ], (error, data) => {
-      if (error) {
-        return reject(error)
-      }
+  var promise = null
+  switch (type) {
+    case 'signup':
+      promise = new Promise((resolve, reject) => {
+        async.waterfall([
+          (callback) => {
+            Validator.syntax(type, inputs, callback)
+          }, (callback) => {
+            Validator.exists(inputs, callback)
+          }
+        ], (error, data) => {
+          if (error) {
+            return reject(error)
+          }
 
-      resolve(data)
-    })
-  })
+          resolve(data)
+        })
+      })
+    break
+    case 'login':
+      promise = new Promise((resolve, reject) => {
+
+      })
+    break
+  } 
 }
 
 /**
@@ -69,7 +79,34 @@ Validator.exists = (email, username, callback) => {
 
   Mongo.get('User').find(_query, _option).then(function (data) {
     if (!data.length) {
-      return callback(data[0])
+      return callback(null)
+    }
+
+    if (data[0].username === username) callback('USERNAME TAKEN')
+    else callback('EMAIL TAKEN')
+  })
+}
+
+/**
+ * The function used to query the database to check if it's good
+ * @param  {String} email
+ * @param  {String} username
+ * @param  {Function} callback
+ * @return
+ */
+Validator.grab = (email, username, callback) => {
+  var _query = {
+    $or: [
+      {username: username},
+      {email: email}
+    ]
+  }
+
+  var _option = {username: 1, password: 1, _id: 0}
+
+  Mongo.get('User').find(_query, _option).then(function (data) {
+    if (!data.length) {
+      return callback('BAD USERNAME')
     }
 
     if (data[0].username === username) callback('USERNAME TAKEN')

@@ -1,12 +1,13 @@
 #mainContent{
 	height: 300px;
-	position:relative;
+	position: absolute;
 	text-align: center;
 	width: 100%;
 	margin: auto;
 	display: block;
 	float: left;
-	margin-top: -50px;
+	margin-top: -150px;
+	top: 50%;
 }
 	.main__title{
 		font-size: 45px;
