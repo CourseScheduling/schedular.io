@@ -4,6 +4,22 @@
 	text-align: center;
 	margin-top: 10px;
 }
+	.schedule__arrow{
+		height: 30px;
+		width: 30px;
+		border: 1px solid #EEE;
+		border-radius: 5px;
+		display: inline-block;
+		margin: 5px 10px;
+	}
+	.schedule__arrow--next{
+		background: url(/img/triangle__right.png) center center no-repeat;
+		background-size: 60%;
+	}
+	.schedule__arrow--previous{
+		background: url(/img/triangle__left.png) center center no-repeat;
+		background-size: 60%;
+	}
 	.schedule__wrap{
 		width: 300px;
 		height: 300px;

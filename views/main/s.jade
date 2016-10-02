@@ -1,7 +1,7 @@
 extends __template
 
 block headContent
-	link(rel="stylesheet" href="/css/s.css")
+	link(rel="stylesheet" href="/css/s--controls.css")
 	link(rel="stylesheet" href="/css/s--schedule.css")
 block bodyContent
 	div#controls__container
@@ -17,6 +17,8 @@ block bodyContent
 			.controls__filter CAMPUS
 			.controls__filter SECTION
 	div#schedule__container
+		.schedule__arrow.schedule__arrow--previous
+		.schedule__arrow.schedule__arrow--next
 		.schedule__wrap
 			.schedule__dayWrap
 				each time, index in ['Su','Mo','Tu','We','Th','Fr','Sa']

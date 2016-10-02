@@ -79,18 +79,24 @@
 				padding: 0 15px 0 15px;
 			}
 			.navbar__thing--menuDrop{
-				height: 20px;
-				width: 20px;
-				background: url(/img/menuIcon.png) center center no-repeat;
-				background-size: 18px 18px; 
+				height: 25px;
+				width: 25px;
+				border-radius: 25px;
+				padding: 0;
+				border: 2px solid #BBB;
+				box-sizing: border-box;
 				cursor: pointer;
+				text-align: center;
+				line-height: 25px;
 			}
-
-
-
-
-
-
+				.navbar__menuBud{
+					margin: auto;
+					height: 12.5px;
+					width: 12.5px;
+					border-radius: 10px;
+					background-color: #446CB3;
+					transition: height 1s, width 1s;
+				}
 
 
 
