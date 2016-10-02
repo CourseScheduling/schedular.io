@@ -6,7 +6,7 @@ router.get('/c',function *(){
 });
 
 router.get('/s',function *(){
-	this.render('main/show');
+	this.render('main/s');
 });
 
 router.get('/b',function *(){

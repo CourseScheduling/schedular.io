@@ -21,10 +21,25 @@ UTIL	=	{
 */
 var AVG_CONSTANT = 225;	
 
+var COLORS = [
+	'#D64541',
+	'#663399',
+	'#4183D7',
+	'#26A65B',
+	'#F2784B',
+	'#F5AB35',
+	'#019875'
+]
+var used =  {}
+
 UTIL.helper.color   =   (function(UTIL){
 		return {
 			bgColor:function(seed){
-				return randomColor({luminosity:"normal",format:"hex",seed:parseInt(seed,36)});           
+				if (!used[seed]) {
+					used[seed] = COLORS[Object.keys(used).length]
+				}
+				return used[seed]
+				//return randomColor({luminosity:"normal",format:"hex",seed:parseInt(seed,36)});           
 			}
 		};
 })(UTIL);

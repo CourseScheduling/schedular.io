@@ -1,3 +1,15 @@
+Array.prototype.shuffle = function () {
+  var i = this.length, j, temp;
+  if ( i == 0 ) return this;
+  while ( --i ) {
+     j = Math.floor( Math.random() * ( i + 1 ) );
+     temp = this[i];
+     this[i] = this[j];
+     this[j] = temp;
+  }
+  return this;
+}
+
 function Controller(){
 	this.Schedules = [];
 }
@@ -45,7 +57,7 @@ Controller.prototype.schedule = function(cb){
 	
 	//If you find collisions early you can save a lot of time.
 	Courses.sort(function(a,b){return a.length - b.length;});
-	
+	var globalCount = 1
 	var s01, e01, s02, e02, 
 	s11, e11, s12, e12, 
 	s21, e21, s22, e22, 
@@ -53,9 +65,9 @@ Controller.prototype.schedule = function(cb){
 	s41, e41, s42, e42, 
 	s51, e51, s52, e52, 
 	s61, e61, s62, e62;	
-	var possible = Courses[0].mangled;
+	var possible = Courses[0].mangled.shuffle();
 	for(var i = 1,ii = Courses.length;i < ii;i++){
-		var _tCourse = Courses[i].mangled;
+		var _tCourse = Courses[i].mangled.shuffle();
 		var _tCL = _tCourse.length;
 		var _temp = possible.slice(0);
 		possible = [];
@@ -64,6 +76,9 @@ Controller.prototype.schedule = function(cb){
 			var _sL = _schedule.length;
 			BadCombo:
 			for(var c = 0,cc = _tCL;c < cc;c++){
+				if (globalCount++ % 5 == 1) {
+					break
+				}
 				var _course = _tCourse[c]
 				var _cL = _course.length;
 				for(var cS = 0,cSS = _sL; cS < cSS;cS++){
@@ -209,3 +224,32 @@ Controller.prototype.sort = function(){
 	});
 	console.info("Sorted in "+(Date.now()-s)+"ms");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
