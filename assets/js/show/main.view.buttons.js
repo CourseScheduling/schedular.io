@@ -1,4 +1,4 @@
-View.prototype.enableButtons = function(){
+/*View.prototype.enableButtons = function(){
 
 }
 
@@ -25,4 +25,4 @@ View.prototype.button = function(el,type){
 		temp: true,
 		body: uniqContainer
 	});
-}
+}*/

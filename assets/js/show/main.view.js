@@ -14,7 +14,6 @@ function View(){
 	this.enableResponsive();
 	this.enableSliders();
 	this.enableBreak();
-	this.enableButtons();
 }
 
 
@@ -152,7 +151,7 @@ View.prototype.loading = function(show){
 	}
 	else{
 		_msg.innerHTML = '';
-		_thing.style.display = 'none';
+		_thing&&(_thing.style.display = 'none');
 	}
 }
 
