@@ -1,32 +1,175 @@
 extends __template
 
 block headContent
-	link(rel="stylesheet" href="/css/s--controls.css")
-	link(rel="stylesheet" href="/css/s--schedule.css")
+	style.
+		#templates{
+			display: none;
+		}
+		#controls__container{
+			box-shadow: 0px 0px 3px #BBB;
+			background-color: #EEE;
+			border-radius: 5px;
+			height: 40px;
+			width: 90%;
+			margin: auto;
+			margin-top: 50px;
+		}
+		#schedule__container{
+			width: 100%;
+			margin-top: 30px;
+			text-align: center;
+		}
+		canvas{
+		}
+		.schedule{
+			width: 248px;			
+			box-shadow: 0px 1px 2px #DDD;
+			background-color: #EEE;
+			margin: 5px;
+			display: inline-block;
+			position: relative;
+		}
+		.schedule--white{
+			background-color: #FFF;
+			box-shadow: 0px 0px 2px #999;
+		}
+			.schedule__infoBox{
+				width: 100%;
+				height: 0px;
+			}
+				.infoBox__strip{
+					width: 100%;
+					float: left;
+					font-family: Open Sans;
+					font-size: 12px;
+					font-weight: 300;
+					margin-top: 0px;
+					background-color: rgba(255, 255, 255, 0.7);
+					margin-top: 1px;
+					color: #222;
+				}
+					.strip__course{
+					background-color: #674172;
+						color: #FFF;
+						font-weight: 400;
+						font-size: 10px;
+						padding: 3px;
+						float: left;
+						border-radius: 4px;
+						margin: 3px 0 3px 10px;
+					}
+					.strip__prof{
+						font-size: 11px;
+						float: right;
+						margin-right: 5px;
+						margin-top: 3px;
+					}
+					.strip__seats{
+						display: inline-block;
+						font-weight: 600;
+						font-size: 11px;
+						float: left;
+						margin-left: 10px;
+						margin-top: 3px;
+					}
+			.schedule--big{
+				width: 80vw;
+				height: 80vw;
+				margin: auto;
+				margin-bottom: 20px;
+				max-width: 750px;
+				max-height: 750px;
+			}
+				.schedule__time--big{
+					border-bottom: 1px solid  rgba(0,0,0,0.05);
+					border-right: 1px solid #DDD;
+					box-sizing: border-box;
+					width: calc(100% / 8);
+					height: 40px;
+					float: left;
+					cursor: pointer;
+				}
+				.schedule__time--half:hover{
+					background-color: #F4D03F;
+				}
+				.schedule__time--day{
+					font-size: 12px;
+					font-family: Open Sans;
+					font-weight: 600;
+					color: #444;
+					line-height: 40px;
+					border-right: 1px solid rgba(0,0,0,0.05);
+					border-bottom: 1px solid rgba(0,0,0,0.2);
+				}
+				.schedule__time--time{
+					font-size: 12px;
+					font-family: Open Sans;
+					font-weight: 300;
+					line-height: 40px;
+					border-right: 1px solid rgba(0,0,0,0.2);
+				}
+				.schedule__time--half{
+					height: 20px;
+					border: 0;
+					border-bottom: 1px solid rgba(0,0,0,0.05);
+					border-right: 1px solid rgba(0,0,0,0.05);
+				}
+				.course__item{
+					width: 150px;
+					background-color: rgba(0,0,0,0.9);
+					box-shadow: 0px 1px 1px #999;
+					font-family: Open Sans;
+					font-size: 11px;
+					padding: 5px;
+					color: #FFF;
+				}
+
+				.schedule__block--big{
+					width: calc(100% / 8);
+					height: 50px;
+					padding-top: 20px;
+					position: absolute;
+					top: 100px;
+					left: calc(100% / 2);
+					background-color: #D24D57;
+					border-radius: 4px;
+					color: #FFF;
+					font-family: Open Sans;
+					font-size: 11px;
+				}
 block bodyContent
 	div#controls__container
-		div#controls__sortWrap
-			div.sort__label.sort__label--top
-				button.sort__item START TIME
-				button.sort__item.sort__item--active DENSITY
-				button.sort__item PROF RATING
-			div.sort__container
-				div.sort__bar
-				div.sort__nub
-		#controls__filterWrap
-			.controls__filter CAMPUS
-			.controls__filter SECTION
 	div#schedule__container
-		.schedule__arrow.schedule__arrow--previous
-		.schedule__arrow.schedule__arrow--next
-		.schedule__wrap
-			.schedule__dayWrap
-				each time, index in ['Su','Mo','Tu','We','Th','Fr','Sa']
-					.schedule__dayLabel=time
-			.schedule__timeWrap
-				each time, index in ['8 am','9 am','10 am','11 am','12 pm','1 pm','2 pm','3 pm','4 pm','5 pm','6 pm','7 pm','8 pm','9 pm','10 pm']
-					.schedule__timeLabel=time
-			.schedule__blockWrap
-				each day in [0,1,2,3,4,5,6]
-					each time in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
-						div.schedule__breakBlock
+		div.schedule.schedule--big.schedule--white
+			each day in ['','SUN','MON','TUE','WED','THU','FRI','SAT']
+				div.schedule__time--big.schedule__time--day=day
+			each time in  ['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm']
+				each day in ['.','S','M','T','W','R','F','Sa']
+					if day == 'Sa'
+						.schedule__time--big.schedule__time--half &nbsp;
+						.schedule__time--big.schedule__time--half &nbsp;
+					else if day == '.'
+						.schedule__time--big.schedule__time--time=time
+					else
+						.schedule__time--big.schedule__time--half &nbsp;
+						.schedule__time--big.schedule__time--half &nbsp;
+			div#schedule__blockContainer--big
+			
+	div#templates
+		div.schedule#schedule__template
+			div(style="width: 100%;font-family: Open Sans;font-weight: 300;font-size: 12px;margin-top: 5px; ")
+				span(style="width: calc(100% / 7);display:inline-block") Su
+				span(style="width: calc(100% / 7);display:inline-block") Mo
+				span(style="width: calc(100% / 7);display:inline-block") Tu
+				span(style="width: calc(100% / 7);display:inline-block") We
+				span(style="width: calc(100% / 7);display:inline-block") Th
+				span(style="width: calc(100% / 7);display:inline-block") Fr
+				span(style="width: calc(100% / 7);display:inline-block") Sa
+
+		div.infoBox__strip#info__template
+			div.strip__course
+			div.strip__seats
+			div.strip__prof
+	script(src="/js/show/json.js")
+	script(src="/js/show/data.js")
+	script(src="/js/show/main.big.schedule.js")

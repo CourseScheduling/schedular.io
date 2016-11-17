@@ -257,3 +257,57 @@
 	display:none;
 }
 
+
+
+		.schedule__btn{
+			display: inline-block;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #DDD;
+			color:#DDD;
+			font-size: 11px;
+			margin: 5px;
+			transition: .25s background-color;
+			cursor: pointer;
+		}
+			.schedule__btn--uniq{
+				color: #3498db;
+				border-color: #3498db;
+			}
+				.schedule__btn--uniq:hover{
+					background-color: #3498db;
+					color: #FFF;
+					transition: .25s background-color;
+				}
+			.schedule__btn--save{
+				color: #e74c3c;
+				border-color: #e74c3c;
+			}
+				.schedule__btn--save:hover{
+					background-color: #e74c3c;
+					color: #FFF;
+					transition: .25s background-color;
+				}
+			.schedule__btn--edit{
+				color: #8e44ad;
+				border-color: #8e44ad;
+			}
+				.schedule__btn--edit:hover{
+					background-color: #8e44ad;
+					color: #FFF;
+					transition: .25s background-color;
+				}
+		.schedule__breakBlock{
+			height: 3.57142857%;
+			width: 14.07%;
+			border-radius: 3px;
+			border-right: 0;
+			border-bottom-color: transparent;
+			float: left;
+			margin-top: -1px;
+			z-index: 100;
+		}
+		.schedule__breakBlock:hover{
+			background-color: rgba(0,0,0,0.3);
+			cursor: pointer;
+		}
