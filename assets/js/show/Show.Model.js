@@ -1,3 +1,6 @@
+window.Courses = []
+window.Sections = {}
+
 function Model () {
 
 }
