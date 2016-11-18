@@ -188,17 +188,59 @@ block headContent
 					.controls__rangeLabel{
 						float: left;
 					}
+				#filter__container{
+					width: 90%;
+					margin-left: 5%;
+					margin-top: 10px;
+					background-color: rgba(0,0,0,0.03);
+					float: left;
+					margin-bottom: 10px;
+				}
+					.filter__option{
+						font-size: 11px;
+						font-family: Raleway;
+						font-weight: 300;
+						padding: 10px;
+						float: left;
+						margin: 5px;
+						border: 1px solid #DDD;
+						border-radius: 5px;
+						background-color: #FFF;
+						cursor: pointer;
+					}
+						.filter__option--active{
+						}
+						.filter__optionNub{
+							height: 6px;
+							width: 6px;
+							float: left;
+							border-radius: 10px;
+							margin-right: 5px;
+							margin-top: 4px;
+							background-color: #4183D7;
+						}
 block bodyContent
 	div#controls__container
-		div.controls__button SORT BY: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		div.controls__button SORT BY: TIME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		div.controls__rangeWrap(data-rangeLabel='sortmax')
 			div.controls__rangeWrap
 				div.controls__rangeLabel MIN
 				div.controls__rangeBar
 				div.controls__rangeNub
 				div.controls__rangeLabel MAX
-		div.controls__button FILTER CAMPUS:
-		div.controls__button FILTER SECTIONS:
+		div.controls__button CAMPUS
+		div.controls__button SECTIONS
+		div.controls__button RANDOM SECTION
+	div#filter__container
+		.filter__option.filter__option--active
+			.filter__optionNub
+			|ABBOTSFORD
+		.filter__option.filter__option--active
+			.filter__optionNub
+			|CHILLIWACK
+		.filter__option.filter__option--active
+			.filter__optionNub
+			|MISSION
 	div#schedule__container
 		div.schedule.schedule--big.schedule--white
 			each day in ['','SUN','MON','TUE','WED','THU','FRI','SAT']

@@ -12,6 +12,7 @@ var home = require('./routes/home');/*
 var login = require('./routes/auth/login');
 var signup = require('./routes/auth/signup');*/
 var main = require('./routes/main/main');
+var profile = require('./routes/profile/profile');
 
 //require('./bin/seats')
 
@@ -31,6 +32,7 @@ app.use(api.routes());/*
 app.use(login.routes());
 app.use(signup.routes());*/
 app.use(main.routes());
+app.use(profile.routes());
 
 app.use(Static('./assets',{
 	hidden: false,
