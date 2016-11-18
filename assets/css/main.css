@@ -99,9 +99,30 @@
 				}
 
 
+#navbar__courseSearch{
+	padding: 10px 0px 10px 30px;
+	border: 0;
+	float: left;
+	margin-top: -5px;
+	margin-left: 25px;
+	padding-left: 30px;
+	border-left: 1px solid #DDD;
+	border-right: 1px solid transparent;
+	outline: 0;
+	font-family: Raleway;
+	font-size: 12px;
+	font-weight: 400;
+	background: url(../img/glass.png) center left 10px no-repeat;
+	background-size: 15px;
+	width: 200px;
+	transition: border-right-color .5s, width 1s;
+}
 
-
-
+	#navbar__courseSearch:focus{
+		border-right: 1px solid #DDD;
+		width: 300px;
+		transition: border-right-color .5s, width 1s;
+	}
 
 
 
@@ -174,3 +195,6 @@
 						background-size: 5px;
 						transition: background 0.25s;
 					}
+
+
+
