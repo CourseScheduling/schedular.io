@@ -13,11 +13,37 @@ function Controller () {
 Controller.prototype.schedule = function () {
   // Sort from least to greatest
   Courses.sort(function (a,b) {return b.mangled.length - a.mangled.length})
-
-  this.scheduler()
-
+  // Execute the Scheduling
+  // Prep the Schedules for viewing and sorting
+  this.prep(this.scheduler())
+  // Load the view
+  App.View.render()
 }
 
+/**
+ * Prepares the Schedules for rendering
+ * 
+ * @return {void}
+ */
+Controller.prototype.prep = function (schedules) {
+
+  // The code for one schedule
+  var uid = this.uuid()
+  
+  var time = 0
+  var rating = 0
+  var avail = 0
+  var dist = 0
+
+  Schedules[uid] = schedule
+  Schedule_Order.push([
+    uid,
+    time,
+    rating,
+    avail,
+    dist
+  ]) 
+}
 
 /**
  * Sorts the Schedule_Order array by whatever options are sorted

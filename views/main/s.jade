@@ -19,8 +19,6 @@ block headContent
 			margin-top: 30px;
 			text-align: center;
 		}
-		canvas{
-		}
 		.schedule{
 			width: 248px;			
 			box-shadow: 0px 1px 2px #DDD;
@@ -137,8 +135,70 @@ block headContent
 					font-family: Open Sans;
 					font-size: 11px;
 				}
+				.controls__button{
+					border: 1px solid #22A7F0;
+					color: #22A7F0;
+					float: left;
+					font-size: 11px;
+					font-family: Raleway;
+					font-weight: 400;
+					margin: 5px;
+					margin-left: 30px;
+					padding: 7.5px 12px;
+					cursor: pointer;
+					transition: background-color .25s;
+					border-radius: 2.5px;
+					background-color: #FFF;
+					box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+				}
+					.controls__button:hover{
+						background-color: #22A7F0;
+						transition: background-color .25s;
+						color: #FFF;
+					}
+					.controls__button:active{
+						box-shadow: 0px 0px 3px rgba(0,0,0,0.4) inset;
+					}
+				.controls__rangeWrap{
+					float: left;
+					height: 40px;
+					line-height: 40px;
+					font-size: 10px;
+					margin-left: 10px;
+					font-family: Raleway;
+				}
+					.controls__rangeBar{
+						height: 2px;
+						background-color: #22A7F0;
+						width: 120px;
+						float: left;
+						margin: 20px 10px;
+					}
+					.controls__rangeNub{
+						float: left;
+						height: 25px;
+						width: 25px;
+						background-color: #FFF;
+						border-radius: 30px;
+						margin-left: -50px;
+						margin-top: 8px;
+						box-shadow: 0px 0px 3px #999;
+						cursor: pointer;
+					}
+					.controls__rangeLabel{
+						float: left;
+					}
 block bodyContent
 	div#controls__container
+		div.controls__button SORT BY: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		div.controls__rangeWrap(data-rangeLabel='sortmax')
+			div.controls__rangeWrap
+				div.controls__rangeLabel MIN
+				div.controls__rangeBar
+				div.controls__rangeNub
+				div.controls__rangeLabel MAX
+		div.controls__button FILTER CAMPUS:
+		div.controls__button FILTER SECTIONS:
 	div#schedule__container
 		div.schedule.schedule--big.schedule--white
 			each day in ['','SUN','MON','TUE','WED','THU','FRI','SAT']
