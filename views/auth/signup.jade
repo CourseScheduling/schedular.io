@@ -1,0 +1,16 @@
+extends __template.jade
+
+block HeadContent
+	title Schedular.io · Signup
+block AuthText
+	|Signup
+	
+block AuthBody
+	form(action="/auth/login" method="POST" onsubmit="return Login()")
+		input.authBody__input(name="u" placeholder="Username")
+		input.authBody__input(name="p" placeholder="Password" type="password")
+		input.authBody__input(name="e" placeholder="Student Email")
+		div.authBody__linkWrap
+			a.authBody__link(title="Password Reset" href="reset") Forgot Your Password?
+			a.authBody__link(title="Login" href="login") Already Have An Account?
+		input.authBody__input.authBody__input--submit(type="submit" value="Signup !")

@@ -1,0 +1,40 @@
+/*
+	Styling for the navbar block
+*/
+
+#navbar{
+	margin: auto;
+	margin-top: 30px;
+	width: 95%;
+	max-width: 1000px;
+	font-family: Raleway;
+	font-size: 12px;
+}
+	
+		.navbar__linkWrap--login{
+			float: right;
+		}
+	.navbar__link{
+		color: #3498db;	
+		float: left;
+		margin-right: 3%;
+		margin-top: 12px;
+	}
+		.navbar__link:hover{
+			text-decoration: underline;
+		}
+		.navbar__link--button{
+			padding: 12px;
+			border: 1px solid #3498db;
+			border-radius: 5px;
+			margin-left: 10px;
+			margin-right: 0px;
+			margin-top: 0px;
+			transition: background-color .25s;
+		}
+			.navbar__link--button:hover{
+				text-decoration: none;
+				background-color: #3498db;
+				color: #FFF;
+				transition: background-color .25s;
+			}

@@ -1,0 +1,51 @@
+/*
+	Styling for the main block, the thing that's in the center
+*/
+
+a{
+	text-decoration: none;
+}
+
+#mainBlock{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 250px;
+	width:290px;
+	margin-top: -125px;
+	margin-left: -145px;
+	font-family: Raleway;
+	text-align: center;
+}
+	.mainBlock__imgLogo{
+		float: right;
+		margin-top: 8px;
+		height: 30px;
+	}
+	.mainBlock__logo{
+		font-size: 50px;
+		width: 100%;
+		margin-right: 20px;
+		color: #333;
+		font-weight: 300;
+	}
+		.mainBlock__logo--sublogo{
+			font-size: 13px;
+			width: 90%;
+			margin: auto;
+			margin-top: 40px;
+			font-family: Open Sans;
+			font-weight: 300;
+		}
+	.mainBlock__signup{
+		background-color: #3498db;
+		color: #FFF;
+		margin: auto;
+		margin-top: 40px;
+		padding: 15px;
+		width: 130px;
+		font-size: 12px;
+		cursor: pointer;
+		border: 2px solid rgba(255, 255, 255, 0.2);
+		border-radius: 5px;
+	}

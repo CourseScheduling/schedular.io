@@ -1,0 +1,105 @@
+#mainContent{
+    height: 430px;
+    width: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -215px;
+    margin-left: -125px;
+}
+
+	#authHeader{
+		font-family: Raleway;
+		font-weight: 300;
+		font-size: 30px;
+		width: 100%;
+		float: left;
+		margin-bottom: 30px;
+	}
+		.authHeader__text{
+			float: left;
+		}
+		.authHeader__logo{
+			float: right;
+			height: 30px;
+			width: 30px;
+			margin: 2.5px;
+		}
+
+	#authBody{
+		width: 100%;
+		text-align: center;
+		padding-top: 10px;
+	}
+		.authBody__input{
+			font-family: Open Sans;
+			font-size: 12px;
+			outline: none;
+			padding: 12px;
+			border:0;
+			border-bottom: 1px solid #DDD;
+			width: 100%;
+			box-sizing: border-box;
+			margin: 20px auto 0px auto;
+			font-weight: 300;
+			transition: border-bottom-color .25s;
+		}
+			.authBody__input:focus{
+				border-bottom-color: #1ABEEE;
+				transition: border-bottom-color .25s;
+			}
+			.authBody__input--submit{
+				margin-top: 30px;
+				text-align: center;
+				width: 80%;
+				background-color: #FFF;
+				color: #3498db;
+				border: 1px solid #3498db;
+				cursor: pointer;
+				padding: 10px;
+				transition: background-color .25s;
+				border-radius: 5px;	
+			}
+				.authBody__input--submit:focus{
+					border-bottom-color: #3498db;
+				}
+				.authBody__input--submit:hover{
+					background-color: #3498db;
+					color: #FFF;
+				}
+				.authBody__input--submit:active{
+					box-shadow: 0px 0px 10px #777 inset;
+					background-color: #3498db;
+					color: #FFF;
+				}
+		.authBody__linkWrap{
+			width: 85%;
+			margin: 25px auto 8px auto;
+			font-family: Open Sans;
+			cursor: pointer;
+		}
+			.authBody__link{
+				font-weight: 300;
+				color: #3498db;		
+				width: 100%;
+				text-align: right;
+				float: right;
+				font-size: 12px;
+				text-decoration: none;
+			}
+				.authBody__link:hover{
+					text-decoration: underline;
+				}
+
+#inp_notif{
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 12px;
+	font-family: Open Sans;
+	font-weight: 400;
+	color: #FFF;
+	float: left;
+	background-color: #1ABEEE;
+	display: none;
+}

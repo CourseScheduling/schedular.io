@@ -1,0 +1,114 @@
+#mainContent{
+	height: 300px;
+	position:relative;
+	text-align: center;
+	width: 100%;
+	margin: auto;
+	display: block;
+	float: left;
+	margin-top: -50px;
+}
+	.main__title{
+		font-size: 45px;
+		font-family: Raleway;
+		font-weight: 300;
+		color: #555;
+	}
+	.main__input{
+		margin-top: 50px;
+		padding: 15px;
+		width: 95%;
+		border: 0;
+		border-bottom: 1px solid #DDD;
+		font-family: Open Sans;
+		font-weight: 300;
+		outline: none;
+		font-size: 13px;
+		max-width: 600px;
+		transition: border-bottom-color .25s;
+	}
+		.main__input:focus{
+			border-bottom-color: #1ABEEE;
+			transition: border-bottom-color .25s;
+		}
+	.main__buttonContainer{
+		margin-top: 40px;
+	}
+		.main__button{    
+			padding: 5px;
+			border: 3px solid rgba(255,255,255,0.1);
+			color: #FFF;
+			font-size: 12px;
+			font-family: Open Sans;
+			max-width: 150px;
+			width: 30%;	
+			margin: 10px;
+			margin-top: 10px;
+			font-weight: 400;
+			border-radius: 2px;
+			cursor: pointer;
+		}
+			#createBtn{
+				background-color: #47a1de;
+			}
+			#findBtn{
+				background-color: #2ecc71;
+			}
+#dropDown{
+	width: 95%;
+	max-width: 600px;
+	margin: auto;
+	box-shadow: 0px 0px 4px #CCC;
+	display: none;
+	text-align: left;
+}
+	#resultTemplate{
+		display: none;
+	}
+	#courseTemplate{
+		display: none;
+	}
+	.result__container{
+		width: 100%;
+		padding: 10px;
+		font-family: Open Sans;
+		font-size: 12px;
+		box-sizing: border-box;
+		cursor: pointer;
+	}
+		.result__container:hover{
+			background-color: #89C4F4;
+		}
+		.result__header{
+			font-weight: 400;
+			display: inline-block;
+		}
+		.result__body{
+			font-weight: 300;
+			margin-left: 10px;
+			display: inline-block;
+		}
+
+
+.main__courseContainer{
+	text-align: center;
+	margin-top: 20px;
+}
+	.course__container{
+		margin: auto;
+		height: 40px;
+		width: 64.4px;
+		//box-shadow: 0px 0px 2px #999;
+		text-align: center;
+		line-height: 40px;
+		cursor: pointer;
+		display: inline-block;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+		.course__text{
+			color: #FFF;
+			font-size: 11px;
+			font-weight: 300;
+			font-family: Open Sans;
+		}

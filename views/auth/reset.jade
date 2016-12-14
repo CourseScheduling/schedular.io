@@ -1,0 +1,12 @@
+extends __template.jade
+block HeadContent
+	title Schedular.io · Password Reset
+block AuthText
+	|Reset
+	
+block AuthBody
+	form(action="/auth/login" method="POST" onsubmit="return Login()")
+		input.authBody__input(name="e" placeholder="Student Email")
+		div.authBody__linkWrap
+			a.authBody__link(title="Signup" href="signup") Ain't Got an Account?
+		input.authBody__input.authBody__input--submit(type="submit" value="Reset My Account")

@@ -1,0 +1,24 @@
+mongod --help for help and startup options
+Mon Jun  6 23:39:01.914 [initandlisten] MongoDB starting : pid=2367 port=27017 dbpath=/data/db/ 64-bit host=schedular
+Mon Jun  6 23:39:01.915 [initandlisten] db version v2.4.9
+Mon Jun  6 23:39:01.915 [initandlisten] git version: nogitversion
+Mon Jun  6 23:39:01.915 [initandlisten] build info: Linux orlo 3.2.0-58-generic #88-Ubuntu SMP Tue Dec 3 17:37:58 UTC 2013 x86_64 BOOST_LIB_VERSION=1_54
+Mon Jun  6 23:39:01.915 [initandlisten] allocator: tcmalloc
+Mon Jun  6 23:39:01.915 [initandlisten] options: {}
+Mon Jun  6 23:39:01.915 [initandlisten] exception in initAndListen: 10296 
+*********************************************************************
+ ERROR: dbpath (/data/db/) does not exist.
+ Create this directory or give existing directory in --dbpath.
+ See http://dochub.mongodb.org/core/startingandstoppingmongo
+*********************************************************************
+, terminating
+Mon Jun  6 23:39:01.915 dbexit: 
+Mon Jun  6 23:39:01.915 [initandlisten] shutdown: going to close listening sockets...
+Mon Jun  6 23:39:01.915 [initandlisten] shutdown: going to flush diaglog...
+Mon Jun  6 23:39:01.915 [initandlisten] shutdown: going to close sockets...
+Mon Jun  6 23:39:01.915 [initandlisten] shutdown: waiting for fs preallocator...
+Mon Jun  6 23:39:01.915 [initandlisten] shutdown: lock for final commit...
+Mon Jun  6 23:39:01.915 [initandlisten] shutdown: final commit...
+Mon Jun  6 23:39:01.915 [initandlisten] shutdown: closing all files...
+Mon Jun  6 23:39:01.915 [initandlisten] closeAllFiles() finished
+Mon Jun  6 23:39:01.915 dbexit: really exiting now

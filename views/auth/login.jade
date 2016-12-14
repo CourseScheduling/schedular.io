@@ -1,0 +1,16 @@
+extends __template.jade
+
+block HeadContent
+	title Schedular.io · Login
+block AuthText
+	|Login
+	
+block AuthBody
+	form#inp_form(action="/auth/login" method="POST")
+		input#inp_username.authBody__input(name="u" placeholder="Username")
+		input#inp_password.authBody__input(name="p" placeholder="Password" type="password")
+		div.authBody__linkWrap
+			a.authBody__link(title="Password Reset" href="reset") Forgot Your Password?
+			a.authBody__link(title="Signup" href="signup") Ain't Got an Account?
+		input.authBody__input.authBody__input--submit(type="submit" value="Login")
+	script(src="/js/auth/login.js")

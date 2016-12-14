@@ -1,0 +1,20 @@
+var universities = {
+	_id: ObjectId,
+	name: String,
+	description: String,
+	activeTerms: String,
+	collectionPrefix: String,
+	emailDomains: [
+		String
+	],
+	activeTerms: [
+		{
+			term:Number,
+			year:Number
+		}
+	]
+};
+
+
+
+
