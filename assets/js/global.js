@@ -74,121 +74,13 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 
 */
-/*
-
-    div#question__overlay
-        div#question__container
-
-*/
-
-function Modal(options){
-	var _make;
-	var _frag = document.createDocumentFragment();
-	var _modal = document.getElementById('question__overlay');
-
-	//Get rid of the modal if it already exists
-	if(_modal){
-		document.body.removeChild(_modal);
-	}
-
-	// The function to make the modal window
-	this.make = _make = function(type,attribs){
-		var el = document.createElement(type);
-		//Just so we can put stuff in it
-		if(attribs.html){
-			el.innerHTML = attribs.html;
-		}
-		for(var attr in attribs){
-			el.setAttribute(attr,attribs[attr]);
-		}
-		return el;
-	}
-
-	//This is gonna be global to everyone
-	var overlay = _make('div',{id: 'question__overlay'});
-	var container = _make('div',{id: 'question__container'});
-	var header = _make('div',{id: 'question__header'});
-	overlay.appendChild(container);
-
-	if(options.header){
-		header.innerHTML = options.header;
-		container.appendChild(header)
-	}
 
 
-	switch(options.type){
-		case 'select':
-		
-			var opCon = _make('div',{id: 'option__container'});
-			container.appendChild(opCon);
-			for(var opt in options.options){
-				option = _make('div',{class:'question__option',html: options.options[opt],'data-key': opt});
-				opCon.appendChild(option);
-				option.addEventListener('click',function(e){
-					options.onChoice&&options.onChoice(e.target.getAttribute('data-key'));
-					//Remove the modal
-					setTimeout(function(){
-						document.body.removeChild(overlay);
-					},100)
-				});
-			}
-		
-		break;
-		case 'body':
-			var _prevParent = options.body.parentNode;
-			var _body = container.appendChild(options.body)
-		break;
-		case 'text':
-			var _prevParent = options.body.parentNode;
-			container.innerHTML += options.body;
 
-		break;
-		default:
 
-		break;
-	}
 
-	//It's like blinking!!
-	setTimeout(function(){
 
-		_frag.appendChild(overlay);
 
-		Velocity(overlay,'fadeIn',{
-			begin: function(){
-				document.body&&document.body.appendChild(_frag);		
-			},
-			duration: 100
-		},100);
-			
-		//If it's outclickable
-		if(options.temp){
-			var _kill = function(e){
-				if(e.target == container ||container.contains(e.target)){
-					return;
-				}
-				else{
-					//Remove the current function
-					document.removeEventListener('click',_kill);
-					//Remove the modal
-					setTimeout(function(){
-						_prevParent&&_prevParent.appendChild(_body);
-
-						Velocity(overlay,'fadeOut',{
-							complete: function(){
-								document.body.removeChild(overlay);
-								options.end&&options.end();
-							},
-							duration: 100
-						});
-
-					},100);
-				}
-
-			}
-			document.addEventListener('click',_kill);
-		}
-	},300);
-}
 
 
 
@@ -214,62 +106,6 @@ n=null}var b,c,e;if(null!==a.count&&void 0!==a.count){b=a.count;c=[];for(a.count
 
 
 //Say hello.
-console.log("%c Yo","font-size:50px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
-console.log("%c wanna help out with schedular?","font-size:12px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
-console.log("%c email me at joseph.thomas@student.ufv.ca","font-size:12px;color:#3498db;font-weight:100;font-family:Calibri, Arial")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function require(src){
-	var s;
-	var _append = function(src){
-		s = document.createElement('script');
-		s.src = src;
-		document.body.appendChild(s);
-	}
-	if(!document){
-		return;
-	}
-
-	if(typeof src == "string"){
-		_append(src);
-	}else if(typeof src == "object"){
-		var last = src.pop();
-		for(var i = 0, ii = src.length;i < ii;i++){
-			_append(src[i]);
-		}
-		setTimeout(function(){
-			_append(last)
-		},200);
-	}
-
-	return src;
-}
+console.log("%c Yo","font-size:50px;color:#3498db;font-weight:100;font-family:Open Sans")
+console.log("%c wanna help out with schedular?","font-size:12px;color:#3498db;font-weight:100;font-family:Open Sans")
+console.log("%c email me at joseph.thomas@student.ufv.ca","font-size:12px;color:#3498db;font-weight:100;font-family:Open Sans")

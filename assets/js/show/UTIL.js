@@ -19,27 +19,11 @@ UTIL	=	{
 *		@method	bgColor	->	Outputs a hex for a bright, cool, background color based on a string seed
 *			@param {String}	seed	
 */
-var AVG_CONSTANT = 225;	
-
-var COLORS = [
-	'#D64541',
-	'#663399',
-	'#4183D7',
-	'#26A65B',
-	'#F2784B',
-	'#F5AB35',
-	'#019875'
-]
-var used =  {}
 
 UTIL.helper.color   =   (function(UTIL){
 		return {
 			bgColor:function(seed){
-				if (!used[seed]) {
-					used[seed] = COLORS[Object.keys(used).length]
-				}
-				return used[seed]
-				//return randomColor({luminosity:"normal",format:"hex",seed:parseInt(seed,36)});           
+				return randomColor({luminosity:"normal",format:"hex",seed:parseInt(seed,36)});           
 			}
 		};
 })(UTIL);
@@ -241,6 +225,7 @@ window.getParam = function(name, url) {
 
 Node.prototype.listen	=	function(obj){
 	for(var event in obj){
+		console.log(event);
 		this.addEventListener(event,obj[event]);
 	}
 }

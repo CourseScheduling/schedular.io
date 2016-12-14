@@ -25,14 +25,13 @@
 	width: 80%;
 	margin: auto;
 	display: inline-block;
-	text-align: center;
 }
 
 	.schedule__container{
 		float: right;
 		margin-top: 10px;
-		min-width: 300px;
-		min-height: 300px;
+		min-width: 320px;
+		min-height: 320px;
 		width: 50vw;
 		height: 50vw;
 		max-width: 550px;
@@ -111,6 +110,7 @@
 					text-align:center;
 				}
 
+
 		.slider__container{
 			display: inline-block;
 			text-align: center;
@@ -166,58 +166,11 @@
 					box-shadow: 0px 0px 2px #999;
 					cursor: pointer;
 				}
-					#break__button{
-						float: right;
-						margin-top: 5px;
-						padding: 7.5px;
-						font-size: 12px;
-						font-family: Open Sans;
-						border: 0;
-						cursor: pointer;
-						background-color: #3498db;
-						color: #FFF;
-						border-bottom: 2px solid rgba(0,0,0,0.1);
-					}
-						.break__container{
-							text-align: center;
-							margin-top: 50px;
-						}
-							.break__table{
-								border-collapse: collapse;
-								margin: auto;
-							}
-								.break__box{
-									font-size: 12px;
-									min-width: 32.2px;
-									min-height: 20px;
-									cursor: pointer;
-								}
-									.break__box--topLabel{
-										border-bottom: 1px solid #EEE;
-									}
-									.break__box--leftLabel{
-										height: 22px;
-										border-bottom-color: #FFF;
-										border-right: 1px solid #EEE;
-									}
-									.break__box--click{
-										border-bottom: 1px solid #EEE;
-										border-right: 1px solid #EEE;
-									}	
-									.break__box[data-broken="true"]{
-										border-bottom-color: #FFF;
-										border-right-color: #FFF;
-										background-color: #F3C13A;
-										transition: background-color 0.2s;
-									}
-
 
 				.schedule__info{
 					float: left;
 					width: 200px;
 					font-family: Raleway;
-					display: block;
-					margin-top: 10px;
 				}
 					.schedule__ratingWrap{
 						font-size: 20px;
@@ -232,16 +185,15 @@
 						width: 100%;
 						font-family: Open Sans;
 						font-size: 12px;
-						float:left;
 					}
 						.schedule__infoBlock{
 							font-size: 11px;
 							display: inline-block;
 							float:left;
+							max-width: 80px;
 						}
 							.schedule__infoBlock--right{
 								margin-left: 10px;
-								float:right;
 							}
 
 #Tips-toolTip{
@@ -256,58 +208,3 @@
 	left: 10px;
 	display:none;
 }
-
-
-
-		.schedule__btn{
-			display: inline-block;
-			padding: 10px;
-			border-radius: 5px;
-			border: 1px solid #DDD;
-			color:#DDD;
-			font-size: 11px;
-			margin: 5px;
-			transition: .25s background-color;
-			cursor: pointer;
-		}
-			.schedule__btn--uniq{
-				color: #3498db;
-				border-color: #3498db;
-			}
-				.schedule__btn--uniq:hover{
-					background-color: #3498db;
-					color: #FFF;
-					transition: .25s background-color;
-				}
-			.schedule__btn--save{
-				color: #e74c3c;
-				border-color: #e74c3c;
-			}
-				.schedule__btn--save:hover{
-					background-color: #e74c3c;
-					color: #FFF;
-					transition: .25s background-color;
-				}
-			.schedule__btn--edit{
-				color: #8e44ad;
-				border-color: #8e44ad;
-			}
-				.schedule__btn--edit:hover{
-					background-color: #8e44ad;
-					color: #FFF;
-					transition: .25s background-color;
-				}
-		.schedule__breakBlock{
-			height: 3.57142857%;
-			width: 14.07%;
-			border-radius: 3px;
-			border-right: 0;
-			border-bottom-color: transparent;
-			float: left;
-			margin-top: -1px;
-			z-index: 100;
-		}
-		.schedule__breakBlock:hover{
-			background-color: rgba(0,0,0,0.3);
-			cursor: pointer;
-		}

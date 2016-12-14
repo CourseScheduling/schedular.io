@@ -12,13 +12,23 @@ Model.prototype.fetch = function(cb){
 		//Extract Profs
 		for(var i = 0, ii = data.length;i < ii;i++){
 			var _sections = data[i].sections;
-			for(var type in _sections){
-				for(var c = 0,cc = _sections[type].length;c < cc;c++){
-					var _section = _sections[type][c];
-					_section.profs&&_section.profs.forEach(function(name){
-						_profs[name]=1
-					});
-				}
+			for(var c = 0,cc = _sections.C.length;c < cc;c++){
+				var _section = _sections.C[c];
+				_section.profs.forEach(function(name){
+					_profs[name]=1
+				});
+			}
+			for(var l = 0,ll = _sections.L.length;l < ll;l++){
+				var _section = _sections.L[l];
+				_section.profs.forEach(function(name){
+					_profs[name]=1
+				});
+			}
+			for(var t = 0,tt = _sections.T.length;t < tt;t++){
+				var _section = _sections.T[t];
+				_section.profs.forEach(function(name){
+					_profs[name]=1
+				});
 			}
 		}
 		

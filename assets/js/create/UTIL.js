@@ -19,12 +19,11 @@ UTIL	=	{
 *		@method	bgColor	->	Outputs a hex for a bright, cool, background color based on a string seed
 *			@param {String}	seed	
 */
-var AVG_CONSTANT = 200;	
 
 UTIL.helper.color   =   (function(UTIL){
 		return {
 			bgColor:function(seed){
-				return randomColor({luminosity:"bright",format:"hex",seed:parseInt(seed,36)});           
+				return randomColor({luminosity:"normal",format:"hex",seed:parseInt(seed,36)});           
 			}
 		};
 })(UTIL);
@@ -191,4 +190,5 @@ UTIL.helper.localStorage	=	(function(window) {
     }
   }
 })(window);
+
 

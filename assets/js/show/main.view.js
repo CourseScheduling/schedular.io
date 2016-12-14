@@ -5,155 +5,19 @@ function View(){
 	};
 	
 	this._sCounter = 0;
-	this._disabled = false;
 	this._templates = {};
-	this._breaks = [];
-	this._breakBoxCurrent = [];
-
+	this._disabled = false;
+	
 	this.enableInfinite();
 	this.enableResponsive();
 	this.enableSliders();
-	this.enableBreak();
-}
-
-
-View.prototype.break = function(el){
-	$this = this;
-	var _current = [],_end = [];
-
-	//Just wanted a quick left button solution
-	var _leftButton = function(evt) {
-	    evt = evt || window.event;
-	    return (evt.which == 3)
-	}
-	var _disableContext = function(e){
-		e.preventDefault();
-		return false;
-	}
-
-
-	el.addEventListener('mousedown',function(){
-
-		$this._breakBoxCurrent = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
-		document.addEventListener("contextmenu",_disableContext);
-	});
-
-
-	el.addEventListener('mouseup',function(e){
-		//Check if the left button is being pressed;
-		var _left = _leftButton(e);
-		_current = $this._breakBoxCurrent;
-
-		_end = [parseInt(el.getAttribute('data-col')),parseInt(el.getAttribute('data-row'))];
-
-		if(_end[0] == _current[0] && _end[1] == _current[1]){
-			return $this.toggleBreak(el);
-		}
-
-		//Since this is multiple selection, iterate through all the blocks
-		for(var col = Math.min(_current[0],_end[0]);col <= Math.max(_current[0],_end[0]);col++){
-			for(var row = Math.min(_current[1],_end[1]);row <= Math.max(_current[1],_end[1]);row++){
-
-				//Since we have a block, toggle it with override
-				var _el = document.querySelector('[data-row="'+row+'"][data-col="'+col+'"]');
-
-				//If the left mouse is down, switch to a negative override
-				$this.toggleBreak(_el,(_left ? -1 : 1));
-			}
-		}
-		document.removeEventListener("contextmenu",_disableContext);
-	});
-
-}
-
-
-View.prototype.enableBreak = function(){
-	$this = this;
-	
-	var _btn = document.getElementById('break__button');
-	_btn.addEventListener('click', function(){
-
-		new Modal({
-			type: 'body',
-			header: 'Drag out where your breaks are',
-			temp: true,
-			body: document.getElementsByClassName('break__container')[0],
-			end: function(){
-				var selected = document.querySelectorAll('[data-broken="true"]');
-				$this._breaks = [];
-				[].forEach.call(selected, function(block){
-					$this._breaks.push([parseInt(block.getAttribute('data-col')),parseInt(block.getAttribute('data-row'))]);
-				});
-				$this.setBreaks();
-			}
-		});
-
-	});
-
-	var _boxes = document.getElementsByClassName('break__box--click');
-	[].forEach.call(_boxes,function(box){
-		$this.break(box);
-	})
-}
-
-
-View.prototype.toggleBreak = function(el,override){
-	var _day = parseInt(el.getAttribute('data-col'));
-	var _time = parseInt(el.getAttribute('data-row'));
-
-	var _broken = el.getAttribute('data-broken');
-
-	_time = ((_time * 60) + 480);
-
-	//Legit toggle the element attribute, unless override is enabled
-	if(override){
-		el.setAttribute('data-broken',(override == -1? '' : 'true'));
-	}else{
-		el.setAttribute('data-broken',(_broken? '' : 'true'));
-	}
-}
-
-View.prototype.setBreaks = function(){
-	var days = [[],[],[],[],[],[],[]];
-	var breaks = [];
-	this._breaks.forEach(function(breakBlock){
-		days[breakBlock[0]].push(breakBlock[1]);
-	});
-
-	for(var day = 0;day < 7;day++){
-		var rangeStart = days[day][0];
-		for(var i = 1,ii = days[day].length;i < ii;i++){
-			if((days[day][i] - days[day][i-1]) != 1){
-				breaks.push([day,rangeStart,days[day][i - 1]]);
-				rangeStart = days[day][i];
-			}
-		}
-		if(rangeStart)
-			breaks.push([day,rangeStart,days[day][i - 1]]);
-	}
-	this._breaks = breaks;
-	this.render(-1);
 }
 
 
 
 
-View.prototype.loading = function(show){
-	var num = 1;
-	for(var i = Courses.length;i--;){
-		num *= Courses[i].mangled.length;
-	}
 
-	var _msg = document.getElementById('loading__message');
-	var _thing = document.getElementById('loading__container');
-	if(show){
-		_msg.innerHTML = "Gimme a sec, I'm going through "+num.toLocaleString()+" possible schedules...";
-	}
-	else{
-		_msg.innerHTML = '';
-		_thing&&(_thing.style.display = 'none');
-	}
-}
+
 
 View.prototype.render = function(num){
 
@@ -185,24 +49,23 @@ View.prototype.render = function(num){
 	//Show all the schedules and reset num
 	var _final = num + this._sCounter;
 	for(var i = this._sCounter;i < _final;i++){
-		_container.appendChild(this.makeSchedule(_schedules[i],i));
+		_container.appendChild(this.makeSchedule(_schedules[i]));
 	}	
 	
 	this._sCounter += num;
 	
-	console.info("Finished rendering " + num + " schedules in " + (Date.now()-_start) + "ms");
+	console.info("Finished rendering " + num + " schedules in" + (Date.now()-_start) + "ms");
 
 }
 
 
-View.prototype.makeSchedule = function(schedule,index){
+View.prototype.makeSchedule = function(schedule){
 	var _wrapper = this.gen('schedule__wrapper');
 	var _course = _wrapper.getElementsByClassName('schedule__blockContainer')[0];
-	_wrapper.setAttribute('data-schedule__index',index);
+	
 	for(var i = 0;i < schedule.length;i++){
 		_course.appendChild(this.makeBlocks(schedule[i]));
 	}
-
 	this.addProfs(_wrapper,schedule);
 	
 	return _wrapper;
@@ -222,17 +85,18 @@ View.prototype.gen = function(template){
 }
 
 View.prototype.addProfs = function(wrapper,schedule){
-	var _profs = wrapper.getElementsByClassName('schedule__infoWrap')[0];
+	var _profs = wrapper.getElementsByClassName('schedule__info')[0];
 	var _sum = 0,_count=0;
 	for(var i = 0,ii = schedule.length;i < ii;i++){
 		var _schedule = schedule[i];
-		for(var p = 0,pp = _schedule.profs&&_schedule.profs.length;p < pp;p++){
+		for(var p = 0,pp = _schedule.profs.length;p < pp;p++){
 			var _line = this.gen('schedule__infoLine');
 			var _b = document.createElement('br');
-			_line.getElementsByClassName('schedule__infoCourse')[0].innerHTML = _schedule.title+' '+_schedule.section;
-			_line.getElementsByClassName('schedule__infoName')[0].innerHTML = _schedule.profs[p].name||'{Unknown}';
-			_line.getElementsByClassName('schedule__infoRating')[0].innerHTML = _schedule.profs[p].rating||'';
-
+			_line.children[0].innerHTML = _schedule.title+' '+_schedule.section;
+			console.log(_schedule.profs)
+			_line.children[1].innerHTML = _schedule.profs[p].name||'{Unknown}';
+			_line.children[2].innerHTML = _schedule.profs[p].rating||'';
+				
 			_line.children[0].style.color = UTIL.helper.color.bgColor(_schedule.title)
 			_profs.appendChild(_line);
 			_profs.appendChild(_b);
@@ -271,28 +135,6 @@ View.prototype.makeBlocks = function(section){
 		_block.appendChild(name);
 		_frag.appendChild(_block);
 	}
-
-	// The break chunks
-	for(var chunk in $this._breaks){
-		var thing = $this._breaks[chunk];
-		thing[1] = ((thing[1] - 1) * 60) + 480;
-		thing[2] = ((thing[2]) * 60) + 480;
-		console.log(thing[2] - thing[1]);
-
-		var _block = UTIL.helper.element.create('div',{class:'schedule__s'});
-
-		UTIL.helper.element.editStyle(_block,{
-			top: [((thing[1] - 480)/900)*100,'%'].join(''),
-			left: [((thing[0]))*(100/7),'%'].join(''),
-			height: [((thing[2] - thing[1])/840)*100,'%'].join('')
-		});
-		
-		var name = UTIL.helper.element.create('div',{class:'schedule__s__name'});
-		name.innerHTML = 'BREAK';
-		name.style.backgroundColor = '#333';
-		_block.appendChild(name);
-		_frag.appendChild(_block);
-	}
 	return _frag;
 }
 
@@ -318,17 +160,16 @@ View.prototype.enableInfinite	=	function(){
 		
 		//We don't want to touch the bottom
     if ((window.innerHeight + window.scrollY) >= height * 0.75) {
+			console.log(window.innerHeight,window.scrollY, height);
 			_this.render();
 		}
 	};
 }
 
 View.prototype.enableResponsive = function(){
-	this.mobile = true;
-	this.render(-1);	
+	
 
 }
-
 View.prototype.enableSliders = function(){
 	var _this = this;
 	var _blobs = document.getElementsByClassName('slider__blob');
@@ -379,13 +220,8 @@ View.prototype.enableSliders = function(){
 View.prototype.none = function(){
 	//Show that there are no schedules to show.
 	var _container = document.getElementById('schedule__scrollWrap');
-	//Get rid of the loading
-	var _loading = document.getElementById('loading__container');
-	_loading.parentNode.removeChild(_loading);
-
 	var _msg = this.gen('none__big');
 	this._disabled = true;
-	this.loading(false);
 	_container.appendChild(_msg);
 }
 
@@ -436,17 +272,3 @@ Tips.prototype.hide = function(block){
 	this._tip.style.display = 'none';
 }
 Tips = new Tips();
-
-function getWidth() {
-  if (self.innerHeight) {
-    return self.innerWidth;
-  }
-
-  if (document.documentElement && document.documentElement.clientWidth) {
-    return document.documentElement.clientWidth;
-  }
-
-  if (document.body) {
-    return document.body.clientWidth;
-  }
-}

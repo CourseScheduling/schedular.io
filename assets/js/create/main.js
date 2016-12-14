@@ -108,8 +108,8 @@ Instant.prototype.fillDrop = function(data){
 Instant.prototype.query = function(value,callback){
 	var _this = this;
 	var _token = UTIL.helper.localStorage.get('token');
-	var _uni = UTIL.helper.localStorage.get('UNIVERSITY');
-	var _url = ('/api/v1/'+_uni+'/search?q='+value);
+	var _uni = UTIL.helper.localStorage.get('uni');
+	var _url = ('/api/v1/ufv/search?q='+value);
 	
 	$.get({
 		token: _token,
@@ -214,29 +214,3 @@ window.Instant = new Instant({
 	},
 	buttons: document.getElementsByClassName('main__button')
 });
-
-
-
-
-
-
-
-/*
-* This is to fetch the university in case we can't find one
-*/
-if(!UTIL.helper.localStorage.get('UNIVERSITY')){
-
-	new Modal({
-		type: 'select',
-		header: "<strong>Hey!</strong> What university do you go to?",
-		options: {
-			sfu: 'SFU - Simon Fraser University',
-			ufv: 'UFV - University of the Fraser Valley',
-			ubc: 'UBC - University of British Columbia'
-		},
-		onChoice: function(uni){
-			UTIL.helper.localStorage.set('UNIVERSITY',uni,Date.now());
-		}
-	});
-
-}
