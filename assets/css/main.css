@@ -121,6 +121,7 @@
 	#navbar__courseSearch:focus{
 		border-right: 1px solid #DDD;
 		width: 300px;
+		
 		transition: border-right-color .5s, width 1s;
 	}
 
