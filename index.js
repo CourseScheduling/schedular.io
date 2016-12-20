@@ -10,7 +10,7 @@ var Jade = require('koa-jade');
 var api = require('./routes/api');
 var home = require('./routes/home');
 var login = require('./routes/auth/login');
-var signup = require('./routes/auth/signup');
+//var signup = require('./routes/auth/signup');
 var main = require('./routes/main/main');
 var app = Koa();
 
@@ -26,7 +26,7 @@ app.use(Logger());
 app.use(home.routes());
 app.use(api.routes());
 app.use(login.routes());
-app.use(signup.routes());
+//app.use(signup.routes());
 app.use(main.routes());
 
 app.use(Static('./assets'));

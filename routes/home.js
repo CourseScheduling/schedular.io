@@ -9,8 +9,8 @@ router.get('/contact', function * () {
   this.render('home/contact');
 });
 
-router.get('/about', function * () {
-  this.render('home/about');
+router.get('/faq', function * () {
+  this.render('home/faq');
 });
 
 /** The following are the authentication views */

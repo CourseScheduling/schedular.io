@@ -1,0 +1,48 @@
+extends __template
+
+block HeadContent
+  style.
+    body{
+      text-align: center;
+    }
+    .page__title{
+      font-size: 50px;
+      width: 100%;
+      margin-right: 20px;
+      color: #333;
+      font-weight: 300;
+      font-family: Nixie One;
+    }
+    .faq__wrap{
+      width: 100%;
+      margin: auto;
+      margin-top: 60px;
+      display: inline-block;
+    }
+      .section__header{
+        font-family: Raleway;
+        font-size: 18px;
+        font-weight: 600;
+        width: 90%;
+        margin: auto;
+        margin-top: 30px;
+      }
+      .section__body{
+        font-family: Raleway;
+        width: 90%;
+        margin: auto;
+        font-size: 12px;
+        margin-top: 15px;
+      }
+
+block BodyContent
+  .faq__wrap
+    .page__title FAQ
+    .section__header Which universities does this work with?
+    .section__body Currently, we serve: UFV, UBC, SFU, and UPEI. 
+    .section__header Do I have to pay for it?
+    .section__body No. It's free for now. Maybe forever.
+  script.
+    setTimeout(function() {
+      document.location = ''
+    },3000)

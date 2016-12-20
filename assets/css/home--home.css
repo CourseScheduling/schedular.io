@@ -28,6 +28,7 @@ a{
 		margin-right: 20px;
 		color: #333;
 		font-weight: 300;
+		font-family: Nixie One;
 	}
 		.mainBlock__logo--sublogo{
 			font-size: 13px;
@@ -38,14 +39,22 @@ a{
 			font-weight: 300;
 		}
 	.mainBlock__signup{
-		background-color: #3498db;
-		color: #FFF;
+		border: 1px solid #3498db;
+		color:  #3498db;
 		margin: auto;
 		margin-top: 40px;
 		padding: 15px;
 		width: 130px;
 		font-size: 12px;
 		cursor: pointer;
-		border: 2px solid rgba(255, 255, 255, 0.2);
+		/*border: 2px solid rgba(255, 255, 255, 0.2);*/
 		border-radius: 5px;
+		font-family: Raleway;
+		background-color: transparent;
+		transition: background-color .25s;
 	}
+		.mainBlock__signup:hover {
+			background-color: #3498db;
+			color: #FFF;
+			transition: background-color .25s;
+		}
