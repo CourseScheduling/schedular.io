@@ -1,0 +1,81 @@
+*{
+	color: #EEE;
+}
+body{
+	background-color: #222;
+}
+	
+#controls__container{
+	width: 80%;
+	max-width: 700px;
+	margin: auto;
+	margin-top: 30px;
+	display: inline-block;
+}
+.knob__container{
+	height: 120px;
+	width: 120px;
+	float: left;
+	text-align: left;
+}
+
+	.knob__wrap{
+		width: 100px;
+		height: 100px;
+		position: relative;
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+		.knob{
+			float: left;
+			z-index: 1;
+		}
+		.knob__input{
+			float: left;
+			font-family: Open Sans;
+			width: 100%;
+			text-align: center;
+			font-size: 10px;
+			margin-top: -55px;
+			z-index: 100;
+		}
+	.knob__label{
+		font-family: Raleway;
+		font-size: 12px;
+		font-weight: 800;
+		width: 100%;
+	}
+#schedules__container{
+	width: 100%;
+	margin-top: 40px;
+}
+.schedule__wrapper{
+	width: 90%;
+}
+.schedule__container{
+	height: 550px;
+	width: 550px;
+	box-shadow: 0px 0px 3px #000;
+}
+
+
+
+
+.filter__wrap{
+	float: right;
+	font-family: Raleway;
+	font-size: 12px;
+	padding: 10px;
+	margin-left: 20px;
+	border: 1px solid #FFF;
+	color: #FFF;
+	border-radius: 5px;
+	width: 80px;
+	cursor: pointer;
+	margin-top: 15px;
+}
+
+	.filter__wrap:hover{
+		background-color: #FFF;
+		color: #000;
+	}
