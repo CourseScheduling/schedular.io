@@ -38,18 +38,3 @@
 				color: #FFF;
 				transition: background-color .25s;
 			}
-#footer__bar{
-	width: 100%;
-	position: absolute;
-	bottom: 10px;
-	left: 0px;
-	height: 30px;
-	text-align: center;
-}
-	.icon__fb{
-		height: 30px;
-		width: 30px;
-		background: url(/img/fb.png) center center no-repeat;
-		background-size: 60%;
-		margin: auto;
-	}
