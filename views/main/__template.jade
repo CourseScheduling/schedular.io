@@ -22,7 +22,7 @@ html
 					a(href="/c" style="outline: none;float: left;margin-top: -2.5px;")
 						div.navbar__thing.navbar__thing--home 
 					div.navbar__thing.navbar__thing--name Guest
-					div.navbar__thing.navbar__thing--menuDrop
+					div#menuDrop.navbar__thing.navbar__thing--menuDrop
 						div.navbar__menuBud
 				div#navbar__menu
 					div.navbar__option PROFILE
@@ -30,7 +30,8 @@ html
 					div.navbar__option SAVED
 					div.navbar__option.navbar__option--header LOGOUT
 			block bodyContent
-		
+			div#footer
+		script(src="/js/main.js")
 		script.
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

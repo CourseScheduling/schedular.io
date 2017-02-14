@@ -1,0 +1,69 @@
+
+/** Styling for the schedule template */
+.schedule{
+  height: 420px;
+  width: 600px;
+  background-color: #EEE;
+  border-radius: 5px;
+  margin-top: 50px;
+  position: relative;
+}
+  /** Styling for the schedule block, and inside. holds the data.*/
+  .schedule__block{
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    height: 50px;
+    width: 116px;
+    border-radius: 5px;
+    background-color: rgba(68,108,179,0.7);
+  }
+    .s--blockTitle{
+      width: 100%;
+      font-size: 12px;
+      text-align: center;
+      font-family: Raleway;
+      margin-top: 5px;
+      color: #FFF;
+    }
+    .s--timeLabel {
+      color: #FFF;
+      font-size: 10px;
+      font-family: Raleway;
+      text-align: center;
+      width: 100%;
+    }
+
+
+  /** Styling for the top bar that displays the day of the week */
+  .day__wraps {
+    width: 100%;
+    margin-top: 10px;
+    float: left;
+    margin-left: 20px;
+  }
+    .day__item{
+      width: 116px;
+      text-align: center;
+      font-size: 12px;
+      display: inline-block;
+      font-family: Josefin Sans;
+    }
+  /** Styling for the left bar that displays the time of day */
+  .time__wraps{
+    float: left;
+    width: 100%;
+    text-align: left;
+  }
+    .time__item{
+      height: 25px;
+      line-height: 25px;
+      font-family: Josefin Sans;
+      font-size: 12px;
+      width: 100%;
+      padding-left: 10px;
+      box-sizing: border-box; 
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+
