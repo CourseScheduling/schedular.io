@@ -1,0 +1,56 @@
+/** A wrap for all the data */
+.schedule__analytics{
+  float: right;
+  height: 100px;
+  width: 300px;
+  margin-top: 50px;
+}
+  /** These are stylings for the big number score. */
+  .sa--score{
+    font-family: Josefin Sans;
+    font-size: 40px;
+    font-weight: 100;
+  }
+    .sa--ten{
+      font-size: 12px;
+    }
+  
+  /** These are the stylings for the smaller scores, for each course. */
+  .schedule__profWrap{
+    width: 250px;
+    font-family: Raleway;
+    font-size: 12px;
+  }
+    .schedule__section {
+      width: 100%;
+      padding: 2.5px 0;
+      float: left;
+      text-align: left;
+    }
+      .sa--prof{
+        display: inline-block;
+        margin-left: 10px;
+        font-family: Open Sans;
+        font-size: 11px;
+        color: #555;
+        font-weight: 300;
+      }
+      .sa--course{
+        font-size: 12px;
+        font-family: Josefin Sans;
+        padding: 3px;
+        background-color: #52B3D9;
+        color: #FFF;
+        border-radius: 2px;
+        padding: 2px 5px;
+        display: inline-block;
+      }
+      .sa--rating{
+        font-size: 11px;
+        font-weight: 600;
+        display: inline-block;
+        margin-left: 10px;
+        float: right;
+        margin-top: 2px;
+        font-family: Open Sans;
+      }

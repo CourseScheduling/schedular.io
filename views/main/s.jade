@@ -4,41 +4,8 @@ extends __template
 block headContent
 	link(href="https://fonts.googleapis.com/css?family=Josefin+Sans|Varela+Round" rel="stylesheet")
 	link(href="/css/scheduling/schedule.css" rel="stylesheet")
+	link(href="/css/scheduling/analytics.css" rel="stylesheet")
 	link(href="/css/scheduling/controls.css" rel="stylesheet")
-	style.
-		.schedule__bar{
-			width: 80%;
-			margin: auto;
-			margin-top: 50px;
-			height: 40px;
-			border-radius: 5px;
-			background-color: #F0F0F0;
-			box-shadow: 0px 1px 1px #BBB;
-		}
-			/** Styling specifically for the range slider */
-			.schedule__slider{
-				width: 150px;
-				height: 40px;
-				line-height: 40px;
-				float: left;
-				margin-lefT: 5px;
-			}
-				.ss--line{
-					width: 150px;
-					height: 2px;
-					margin-top: 19px;
-					background-color: #19B5FE;
-					margin-left: 15px;
-				}
-				.ss--nub{
-					height: 30px;
-					width: 30px;
-					background-color: #FFF;
-					border-radius: 20px;
-					margin-top: -15px;
-					box-shadow: 0px 0px 3px #999;
-
-				}
 block bodyContent
 	div.schedule__bar
 		div.schedule__slider
@@ -51,7 +18,22 @@ block bodyContent
 		div.day__wraps
 			each day in ['MON','TUE','WED','THU','FRI']
 				div.day__item=day
-
 		div.time__wraps
 			each time in [8,9,10,11,12,1,2,3,4,5,6,7,8,9,10]
 				div.time__item=time
+	div.schedule__analytics
+		div.sa--score 3
+			span.sa--ten / 10
+		div.schedule__profWrap
+			div.schedule__section
+				div.sa--course CPSC 110 202
+				div.sa--prof DR. BERG
+				div.sa--rating 3.11
+			div.schedule__section
+				div.sa--course COGS 200 101
+				div.sa--prof DR. FAIS
+				div.sa--rating 3.11
+			div.schedule__section
+				div.sa--course MATH 200 201
+				div.sa--prof DR. GAO
+				div.sa--rating 3.11
