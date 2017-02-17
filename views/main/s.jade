@@ -2,38 +2,77 @@ extends __template
 
 
 block headContent
+	style.
+		/** These styles are only here, so they get to initialize first, minimizing reflow */
+		#template{
+			display: none;
+		}
 	link(href="https://fonts.googleapis.com/css?family=Josefin+Sans|Varela+Round" rel="stylesheet")
 	link(href="/css/scheduling/schedule.css" rel="stylesheet")
 	link(href="/css/scheduling/analytics.css" rel="stylesheet")
 	link(href="/css/scheduling/controls.css" rel="stylesheet")
+	link(href="/css/scheduling/extras.css" rel="stylesheet")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/catiline/2.9.3/catiline.min.js")
 block bodyContent
-	div.schedule__bar
+	div.schedule__bar.schedule__bar--off
 		div.schedule__slider
+			span.ss--label.ss--labelLeft start
 			div.ss--line
-			div.ss--nub
-	div.schedule
-		div.schedule__block
-			div.s--blockTitle CPSC 110 202
-			div.s--timeLabel 10am -- 1pm
-		div.day__wraps
-			each day in ['MON','TUE','WED','THU','FRI']
-				div.day__item=day
-		div.time__wraps
-			each time in [8,9,10,11,12,1,2,3,4,5,6,7,8,9,10]
-				div.time__item=time
-	div.schedule__analytics
-		div.sa--score 3
-			span.sa--ten / 10
-		div.schedule__profWrap
-			div.schedule__section
-				div.sa--course CPSC 110 202
-				div.sa--prof DR. BERG
-				div.sa--rating 3.11
-			div.schedule__section
-				div.sa--course COGS 200 101
-				div.sa--prof DR. FAIS
-				div.sa--rating 3.11
-			div.schedule__section
-				div.sa--course MATH 200 201
-				div.sa--prof DR. GAO
-				div.sa--rating 3.11
+				div.ss--nub
+			span.ss--label.ss--labelRight end
+		div.schedule__selection SORT BY:
+			label(style="margin-left: 15px;") TIME
+		div.schedule__selection.schedule__selection--narrow FILTER PROFS
+	div.loading__box
+		div.l--text Hold the phone... we're examining 1,834,672,011,264
+			br
+			|schedule combinations.
+		div.l--animationWrap
+			div.l--animation
+				span.loader-block
+				span.loader-block
+				span.loader-block
+				br
+				span.loader-block
+				span.loader-block
+				span.loader-block
+				br
+				span.loader-block
+				span.loader-block
+				span.loader-block
+	div#template
+		div.schedule__wrap
+			div.schedule
+				div.schedule__block
+					div.s--blockTitle CPSC 110 202
+					div.s--timeLabel 10am -- 1pm
+				div.schedule__block(style="top: 50px;height: 35px;left: 20px;")
+					div.s--blockTitle CPSC 110 202
+					div.s--timeLabel 10am -- 1pm
+				div.day__wraps
+					each day in ['MON','TUE','WED','THU','FRI']
+						div.day__item=day
+				div.time__wraps
+					each time in [8,9,10,11,12,1,2,3,4,5,6,7,8,9,10]
+						div.time__item=time
+			div.schedule__analytics
+				div.sa--score 3
+					span.sa--ten / 10
+				div.schedule__profWrap
+					div.schedule__section
+						div.sa--course CPSC 110 202
+						div.sa--prof DR. BERG
+						div.sa--rating 3.11
+					div.schedule__section
+						div.sa--course COGS 200 101
+						div.sa--prof DR. FAIS
+						div.sa--rating 3.11
+					div.schedule__section
+						div.sa--course MATH 200 201
+						div.sa--prof DR. GAO
+						div.sa--rating 3.11
+	script(src="/js/scheduling/schedular_parallel.js")
+	script(src="/js/scheduling/schedular.js")
+	script(src="/js/scheduling/view.js")
+	script(src="/js/scheduling/main.js")

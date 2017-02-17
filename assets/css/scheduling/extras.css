@@ -1,0 +1,90 @@
+.loading__box{
+  width: 100%;
+  display: inline-block;
+  margin-top: 50px;
+}
+  .l--animationWrap{
+    width: 100%;
+    float: left;
+
+  }
+  .l--animation{
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .l--text{
+    font-family: Josefin Sans;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    float: left;
+  }
+
+
+
+
+
+
+.loader-block {
+  display: inline-block;
+  opacity: 0;
+  width: 25px;
+  height: 25px;
+  background: #000;
+  animation: show 2s infinite, pulse 2s infinite;
+}
+
+.loader-block:nth-child(1) {
+  animation-delay: 0.065s;
+}
+
+.loader-block:nth-child(2) {
+  animation-delay: 0.13s;
+}
+
+.loader-block:nth-child(3) {
+  animation-delay: 0.195s;
+}
+
+.loader-block:nth-child(4) {
+  animation-delay: 0.13s;
+}
+
+.loader-block:nth-child(5) {
+  animation-delay: 0.195s;
+}
+
+.loader-block:nth-child(6) {
+  animation-delay: 0.26s;
+}
+
+.loader-block:nth-child(7) {
+  animation-delay: 0.195s;
+}
+.loader-block:nth-child(8) {
+  animation-delay: 0.26s;
+}
+.loader-block:nth-child(9) {
+  animation-delay: 0.4;
+}
+
+@keyframes pulse {
+  from{
+    background: #26A65B;
+  }
+  to {
+    background: #4183D7;
+  }
+}
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

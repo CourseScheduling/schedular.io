@@ -109,7 +109,7 @@ Instant.prototype.query = function(value,callback){
 	var _this = this;
 	var _token = UTIL.helper.localStorage.get('token');
 	var _uni = UTIL.helper.localStorage.get('uni');
-	var _url = ('/api/v1/ufv/search?q='+value);
+	var _url = ('/api/v1/ubc/search?q='+value);
 	
 	$.get({
 		token: _token,

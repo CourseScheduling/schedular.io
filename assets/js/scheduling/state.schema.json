@@ -1,0 +1,42 @@
+{
+  "schedules": [
+    [
+      {
+        "times": [0,0,0,0,0],
+        "section": "MATH110",
+        "children": [
+          {
+            "times": [0,0,0,0,0],
+            "section": "CHEM110:102L, CHEM110:103C",
+            "children": []
+          },
+        ]
+      },
+    ]
+  ],
+
+  "seats": {
+    "MATH110:103": {
+      "w":0,
+      "a":0,
+      "m":0
+    }
+  },
+
+  "view": {
+    "loading": false, // If this is true, then inView must be 0.
+    "inView": 0, // This is the number of schedules in the view.
+    "controls": {
+      "on": false // If this is true, none of the controls should be interactive. Also, slight opacity
+      "sortValue": 1.00, // The current value of the sort thing.
+      "sortType": ENUM("PROF RATING","GPA","TIME", "BEST SCHEDULE")
+    }
+  }
+}
+
+// The seat number is designed as follows:
+// 3 10 bit numbers.
+
+
+
+
